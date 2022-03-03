@@ -64,3 +64,22 @@ small,
 .text_small {
   font-size: 0.8rem;
 }
+
+a {
+  color: var(--black-color);
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--yellow-color);
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
