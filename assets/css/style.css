@@ -540,6 +540,7 @@ header .menu-shift {
   order: 0;
 }
 
+/*  for author card */
 .thread-body {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -553,6 +554,60 @@ header .menu-shift {
   align-content: center;
 }
 
+.discussion {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 0 15px;
+}
+
+/* nested comment section */
+
+.comment-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+/* left indicator before the comment card */
+.comment-container::before {
+  content: "";
+  position: absolute;
+  background-color: blue;
+  min-height: 100%;
+  width: 1px;
+  left: -10px;
+}
+
+/* nest the comment except the first one */
+.comment-container:not(:first-child) {
+  margin-left: 48px;
+  margin-right: 16px;
+}
+
+.comment-card {
+  padding: 20px;
+  background-color: #f7f1e3;
+  border: 1px solid #dcdde1;
+  border-radius: 5px;
+  min-width: 100%;
+}
+
+.comment-card h3,
+.comment-card p {
+  margin-bottom: 16px;
+}
+
+.comment-footer {
+  display: flex;
+  font-size: 14px;
+  opacity: 0.6;
+  gap: 20px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.show-reply {
+  cursor: pointer;
+}
 /* responsive media query */
 
 /* mobile screen */
