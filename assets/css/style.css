@@ -481,3 +481,43 @@ header .menu-shift {
     margin-left: 0.5em;
   }
 }
+
+/* Discussion Page */
+
+/* container */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+/* responsive media query */
+
+/* mobile screen */
+
+@media only screen and (min-width: 540px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+/* table screen*/
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+/* Normal screen*/
+@media only screen and (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+
+/* Large screen*/
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
