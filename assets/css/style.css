@@ -482,8 +482,6 @@ header .menu-shift {
   }
 }
 
-/* Discussion Page */
-
 /* container */
 .container {
   width: 100%;
@@ -512,6 +510,94 @@ header .menu-shift {
   margin-bottom: 20px;
 }
 
+/* Discussion Page */
+
+.discussion-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 100%;
+  padding: 15px;
+  gap: 5px;
+}
+
+.discussion-header > div {
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.discussion-title {
+  order: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-self: flex-start;
+}
+
+.discussion-create {
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-self: baseline;
+}
+
+/* table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  padding: 12px 15px;
+  border: 1px solid white;
+  text-align: center;
+  font-size: 16px;
+}
+
+table th {
+  background-color: #4a69bd;
+  color: white;
+}
+
+@media (max-width: 500px) {
+  table thead {
+    display: none;
+  }
+
+  table,
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 15px;
+  }
+}
+
+/* Single Discussion Page */
+
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -520,6 +606,10 @@ header .menu-shift {
   align-items: normal;
   align-content: normal;
   gap: 12px;
+}
+
+.flex-horizontal-center {
+  justify-content: center;
 }
 
 .flex-items:nth-child(1) {
@@ -608,25 +698,33 @@ header .menu-shift {
 .show-reply {
   cursor: pointer;
 }
+
 /* responsive media query */
 
 /* mobile screen */
 
-@media only screen and (min-width: 576px) {
+@media (min-width: 576px) {
   .container {
-    font-size: 20px;
+    max-width: 540px;
+  }
+}
+
+/* table screen */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
   }
 }
 
 /* Laptop screen*/
-@media only screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .container {
-    max-width: 970px;
+    max-width: 960px;
   }
 }
 
 /* Desktop screen*/
-@media only screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1140px;
   }

@@ -20,16 +20,16 @@ include('include/header.php');
 
     <!-- Discussion thered sections -->
     <section>
-        <div class="table-responsive">
-            <table class="table align-middle">
+        <div>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Likes</th>
-                        <th scope="col">Replies</th>
-                        <th scope="col">Views</th>
-                        <th scope="col">Activity</th>
+                        <th>Topic</th>
+                        <th>Category</th>
+                        <th>Likes</th>
+                        <th>Replies</th>
+                        <th>Views</th>
+                        <th>Activity</th>
                     </tr>
                 </thead>
                 <tbody>
