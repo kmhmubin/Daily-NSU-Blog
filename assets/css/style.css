@@ -495,6 +495,13 @@ header .menu-shift {
 .pb-2 {
   padding-bottom: 20px;
 }
+.pr-2 {
+  padding-right: 20px;
+}
+.pl-2 {
+  padding-left: 20px;
+}
+
 .ptb-2 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -504,6 +511,12 @@ header .menu-shift {
 }
 .mb-2 {
   margin-bottom: 20px;
+}
+.mr-2 {
+  margin-right: 20px;
+}
+.ml-2 {
+  margin-left: 20px;
 }
 .mtb-2 {
   margin-top: 20px;
@@ -699,6 +712,107 @@ table th {
   cursor: pointer;
 }
 
+/* Profile page */
+.profile-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-areas: "profile-header profile-header" "profile-body profile-articles";
+  grid-template-columns: 40% 4fr;
+  grid-template-rows: auto 1fr;
+}
+
+.profile-container > div {
+  padding: 20px;
+}
+
+.profile-header {
+  grid-area: profile-header;
+}
+
+.profile-body {
+  grid-area: profile-body;
+}
+
+.profile-articles {
+  grid-area: profile-articles;
+}
+
+.profile-header-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+}
+
+.profile-header-items > div {
+  margin: 4px;
+}
+
+.profile-header-items:nth-child(1) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 2;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.profile-header-items:nth-child(2) {
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.profile-header-items:nth-child(3) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 2;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.social-media-list ul {
+  list-style-type: none;
+  margin-right: 20px;
+}
+
+.social-media-list li {
+  display: inline-block;
+}
+
+.social-media-list a {
+  text-decoration: none;
+}
+
+.social-media-list i {
+  font-size: 29px;
+  color: #9f61e7;
+  padding: 5px;
+}
+
+.social-media-list i:hover {
+  color: #40407a;
+}
+
+.user-post {
+  padding: 20px;
+  background-color: #f7f1e3;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  box-shadow: 10px 10px;
+}
+
+.user-post:hover {
+  background-color: #9f61e7;
+}
 /* responsive media query */
 
 /* mobile screen */
