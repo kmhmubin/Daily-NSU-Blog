@@ -1,6 +1,8 @@
 <header>
     <div class="logo">
-        <h1 class="logo-text"><span>NSUer's</span> Blogs</h1>
+        <a href="index.php">
+            <h1 class="logo-text"><span>NSUer's</span> Blogs</h1>
+        </a>
     </div>
     <i class="fa fa-bars menu-shift"></i>
     <ul class="nav">
@@ -14,7 +16,7 @@
                 <i class="fa fa-chevron-down"></i>
             </a>
             <ul>
-                <li><a href="#">Dashboard</a></li>
+                <li><a href="profile.php">Dashboard</a></li>
                 <li><a href="#" class="logout">Logout</a></li>
             </ul>
         </li>
