@@ -68,7 +68,7 @@ include('include/header.php');
             <div class="main-content">
                 <h1 class="recent-post-title">Recent Post</h1>
 
-                <div class="post">
+                <div class="post clearfix">
                     <img src="assets/images/convocation.jpg" alt="" class="post-img">
                     <div class="post-preview">
                         <h2><a href="single.html">25th Convocation Extended date of degree application</a></h2>
@@ -84,7 +84,7 @@ include('include/header.php');
                     </div>
                 </div>
 
-                <div class="post">
+                <div class="post clearfix">
                     <img src="assets/images/convocation.jpg" alt="" class="post-img">
                     <div class="post-preview">
                         <h2><a href="single.html">25th Convocation Extended date of degree application</a></h2>
@@ -100,7 +100,7 @@ include('include/header.php');
                     </div>
                 </div>
 
-                <div class="post">
+                <div class="post clearfix">
                     <img src="assets/images/convocation.jpg" alt="" class="post-img">
                     <div class="post-preview">
                         <h2><a href="single.html">25th Convocation Extended date of degree application</a></h2>
