@@ -42,7 +42,7 @@ $(document).ready(function () {
 });
 
 // PAGE: Edit Profile
-
+// input forms ids
 const form = document.getElementById("form");
 const firstName = document.getElementById("first_name");
 const lastName = document.getElementById("last_name");

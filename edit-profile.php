@@ -10,6 +10,7 @@ include('include/header.php');
         </div>
 
         <form action="" id="form" class="edit-form" method="post" enctype="multipart/form-data">
+
             <!-- Profile Image -->
             <div class="form-control">
                 <label for="profile_picture">Profile Picture</label>
@@ -18,6 +19,7 @@ include('include/header.php');
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error Message</small>
             </div>
+
             <!-- First Name -->
             <div class="form-control">
                 <label for="first_name">First Name</label>
