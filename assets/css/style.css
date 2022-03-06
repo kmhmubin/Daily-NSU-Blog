@@ -35,7 +35,7 @@ a {
   clear: both;
 }
 .btn {
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.5rem;
   background: #6a89cc;
   color: #0c2461;
   border: 1px solid transparent;
@@ -57,6 +57,8 @@ a {
   display: block;
   width: 100%;
   border-radius: 5px;
+  border: 0.2px solid gray;
+  background: white;
   outline: none;
   color: #2c2c54;
   line-height: 1.5rem;
@@ -79,6 +81,7 @@ a {
   border: 1px solid #c23616;
   background: rgb(233, 78, 78);
 }
+
 /*css for bannar starts*/
 .banner-img {
   background-image: url(../image/banner.jpg);
@@ -190,7 +193,9 @@ header ul li a:hover {
 header .menu-shift {
   display: none;
 }
-/*css for post slider starts*/
+/*css for navigation ends*/
+
+/*css for post slider (Trending post section) starts*/
 .page-wrapper a:hover {
   color: #1e3799;
 }
@@ -201,6 +206,7 @@ header .menu-shift {
   text-align: center;
   margin: 30px auto;
 }
+/*css for cursor*/
 .post-slider .next {
   position: absolute;
   top: 50%;
@@ -243,10 +249,9 @@ header .menu-shift {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
 /*css for post slider ends*/
 
-/*css for content section starts*/
+/*css for content section (Recent post section) starts*/
 .content {
   width: 90%;
   margin: 30px auto 30px;
@@ -304,9 +309,12 @@ header .menu-shift {
   float: left;
   height: 300px;
 }
+
+/*signal post section*/
 .content .sidebar.single {
   padding: 0px 10px;
 }
+
 /*comment section*/
 .content .sidebar.single .comment {
   background: white;
@@ -314,7 +322,6 @@ header .menu-shift {
   border-radius: 5px;
   margin-bottom: 20px;
 }
-
 .content .sidebar .section {
   background: white;
   padding: 20px;
@@ -370,7 +377,7 @@ header .menu-shift {
 }
 /*css for register From ends*/
 
-/*css for footer*/
+/* footer section */
 .footer {
   background: #40407a;
   color: #dcdde1;
@@ -404,7 +411,6 @@ header .menu-shift {
 .footer .footer-content .contact-form .contact-input:focus {
   background: black;
 }
-
 .footer .footer-bottom {
   background: #474787;
   color: black;
@@ -436,57 +442,12 @@ header .menu-shift {
   transition: all 0.3s;
 }
 
-@media only screen and (max-width: 750px) {
-  header {
-    position: relative;
-  }
-
-  header ul {
-    width: 100%;
-    max-height: 0px;
-    background: #40407a;
-    overflow: hidden;
-  }
-  .showing {
-    max-height: 100em;
-  }
-  header ul li {
-    width: 100%;
-  }
-  header ul li ul {
-    position: static;
-    display: block;
-    width: 100%;
-  }
-  header ul li ul li a {
-    padding: 10px;
-    color: #2c2c54;
-    background: #f7f1e3;
-    padding-left: 50px;
-  }
-  header ul li ul li a:hover {
-    background: #dcdde1;
-  }
-  header ul li ul li a.logout {
-    color: #c23616;
-  }
-  header .menu-shift {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 1.9em;
-  }
-  header .logo {
-    margin-left: 0.5em;
-  }
-}
-
 /* container */
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0px 20px;
+  max-width: 1140px;
 }
 
 .pt-2 {
@@ -523,7 +484,7 @@ header .menu-shift {
   margin-bottom: 20px;
 }
 
-/* Discussion Page */
+/* PAGE: Discussion Page */
 
 .discussion-header {
   display: flex;
@@ -609,7 +570,7 @@ table th {
   }
 }
 
-/* Single Discussion Page */
+/* PAGE: Single Discussion Page */
 
 .flex-container {
   display: flex;
@@ -663,7 +624,7 @@ table th {
   padding: 0 15px;
 }
 
-/* nested comment section */
+/* PAGE: Thread nested comment section */
 
 .comment-container {
   position: relative;
@@ -712,7 +673,7 @@ table th {
   cursor: pointer;
 }
 
-/* Profile page */
+/* PAGE: Profile page */
 .profile-container {
   display: grid;
   width: 100%;
@@ -822,6 +783,7 @@ table th {
   overflow: hidden;
   width: 600px;
   max-width: 100%;
+  margin: auto;
 }
 
 .edit-profile-header {
@@ -842,6 +804,26 @@ table th {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
+}
+
+.image-preview {
+  width: 300px;
+  min-height: 100px;
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #cccccc;
+  cursor: pointer;
+}
+
+.image-preview__img {
+  display: none;
+  width: 100%;
 }
 
 .form-control label {
@@ -942,31 +924,125 @@ table th {
 
 /* responsive media query */
 
-/* mobile screen */
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
+/* Desktop Screen */
+@media only screen and (max-width: 934px) {
+  .content {
+    width: 100%;
+  }
+  .content .main-content {
+    width: 100%;
+    padding: 10px;
+  }
+  .content .main-content .post {
+    width: 100%;
+  }
+  .content .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+  .content .sidebar .section.scarch {
+    margin-top: 30px;
+  }
+  .footer {
+    margin-top: 450px;
+    height: auto;
+    position: relative;
+  }
+  .footer .footer-content {
+    height: auto;
+    flex-direction: column;
+  }
+  .footer .footer-content .contact-form {
+    padding-bottom: 90px;
+  }
+  .signup-content {
+    width: 50%;
   }
 }
 
 /* table screen */
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
+@media only screen and (max-width: 770px) {
+  header {
+    position: relative;
+  }
+  .main-content-wrapper {
+    padding: 10px;
+  }
+  header ul {
+    width: 100%;
+    max-height: 0px;
+    background: #40407a;
+    overflow: hidden;
+  }
+  .showing {
+    max-height: 100em;
+  }
+  header ul li {
+    width: 100%;
+  }
+  header ul li ul {
+    position: static;
+    display: block;
+    width: 100%;
+  }
+  header ul li ul li a {
+    padding: 10px;
+    color: #2c2c54;
+    background: #f7f1e3;
+    padding-left: 50px;
+  }
+  header ul li ul li a:hover {
+    background: #dcdde1;
+  }
+  header ul li ul li a.logout {
+    color: #c23616;
+  }
+  header .menu-shift {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.9em;
+  }
+  header .logo {
+    margin-left: 0.5em;
+  }
+  .content .sidebar .section.topics {
+    margin-top: 50px;
+  }
+  .signup-content {
+    width: 60%;
   }
 }
 
-/* Laptop screen*/
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
+/* mobile screen */
+@media only screen and (max-width: 600px) {
+  .content .main-content .post {
+    height: auto;
   }
-}
+  .content .main-content .post .post-img {
+    width: 100%;
+  }
+  .content .main-content .post .post-preview {
+    width: 100%;
+  }
+  .content .main-content .post .read-more {
+    position: static;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 
-/* Desktop screen*/
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
+  .post-slider .next {
+    right: 10px;
+  }
+  .post-slider .prev {
+    left: 10px;
+  }
+  .content .main-content.single {
+    padding: 10px 20px;
+  }
+  .signup-content {
+    width: 90%;
   }
 }
