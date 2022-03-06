@@ -21,7 +21,7 @@
         </div>
         <i class="fa fa-bars menu-shift"></i>
         <ul class="nav">
-            <li><a href="#">Home</a></li>
+            <li><a href="homepage.php">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Service</a></li>
         </ul>
@@ -54,7 +54,7 @@
             <div>
                 <button type="submit" name="signup-btn" class="btn btn-big">Sign Up</button>
             </div>
-            <p>Or <a href="login.html">Log in</a> </p>
+            <p>Or <a href="login.php">Log in</a> </p>
         </form>
     </div>
     <!--sign up form starts-->
