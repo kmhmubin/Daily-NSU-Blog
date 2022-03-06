@@ -45,7 +45,7 @@
             <div>
                 <button type="submit" name="login-btn" class="btn btn-big">Log in</button>
             </div>
-            <p>Or <a href="signup.html">Register</a> </p>
+            <p>Or <a href="signup.php">Register</a> </p>
         </form>
     </div>
     <!--sign up form starts-->
