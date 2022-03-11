@@ -1,55 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Front awesome link-->
-    <script src="https://kit.fontawesome.com/4e17d14c86.js" crossorigin="anonymous"></script>
-    <!--Google fonts link-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-    <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>First-page</title>
-</head>
-
-<body>
-    <!--Nevagation starts-->
-    <header>
-        <div class="logo">
-            <h1 class="logo-text"><span>NSUer's</span> Blogs</h1>
-        </div>
-        <i class="fa fa-bars menu-shift"></i>
-        <ul class="nav">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="login.php"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
-        </ul>
-    </header>
-    <!--Nevagation starts-->
-
-    <!--Bannar section starts-->
-    <div class="banner-img">
-    </div>
-    <div class="banner-text">
-        <h1>A Perfect Place to start</h1>
-        <p>
-            <i class="fa-solid fa-star-of-life"></i>
-            <b>Document Your life.</b> Discover the power full moment in your daily life.<br>
-            <i class="fa-solid fa-fire"></i>
-            <b>Improve yourself.</b> Prove your self and accomplish the goals you set.<br>
-            <i class="fa-solid fa-lightbulb"></i>
-            <b>Gate Creative Every Day.</b> Creat and Share Something.<br>
-            <i class="fa-solid fa-hands-praying"></i>
-            <b>Guide Others.</b> Help others and bring everyone in one frame.
-        </p>
-        <a href="signup.php">Sign Up</a>
-    </div>
-
-    </div>
-    <!--Bannar section ends-->
-
     <!--footer starts-->
     <div class="footer">
         <div class="footer-content">
@@ -92,6 +40,6 @@
     <!--custom scrip-->
     <script src="assets/js/scripts.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>

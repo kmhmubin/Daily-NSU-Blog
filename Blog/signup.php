@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,19 +10,20 @@
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Sign-up form</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text"><span>NSUer's</span> Blogs</h1>
+            <h1 class="logo-text"><span>NSUer's</span> Blog</h1>
         </div>
         <i class="fa fa-bars menu-shift"></i>
         <ul class="nav">
-            <li><a href ="#">Home</a></li>
-            <li><a href ="#">About Us</a></li>
-            <li><a href ="#">Service</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Service</a></li>
         </ul>
     </header>
 
@@ -30,7 +32,7 @@
         <form action="signup.html">
             <h2 class="form-title">Register</h2>
 
-           <!-- <div class="msg success error">
+            <!-- <div class="msg success error">
                 <li>Username Required</li>
             </div>-->
             <div>
@@ -52,14 +54,15 @@
             <div>
                 <button type="submit" name="signup-btn" class="btn btn-big">Sign Up</button>
             </div>
-            <p>Or <a href="login.html">Log in</a> </p>
+            <p>Or <a href="login.php">Log in</a> </p>
         </form>
     </div>
     <!--sign up form starts-->
     <!--Jquary-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <!--custom scrip-->
     <script src="js/Validation.js"></script>
 </body>
+
 </html>
