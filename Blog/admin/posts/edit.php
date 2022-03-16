@@ -1,3 +1,6 @@
+
+<?php include('../../path.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,53 +12,29 @@
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
 
-    <title>Admin add topics</title>
+    <title>Admin  Edit Post</title>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1 class="logo-text"><span>NSUer's</span> Blogs</h1>
-        </div>
-        <i class="fa fa-bars menu-shift"></i>
-        <ul class="nav">
-            <li>
-                <a href ="#">
-                    <i class="fa fa-user"></i>
-                    User Name
-                    <i class="fa fa-chevron-down"></i>
-                </a>
-                <ul>
-                    <li><a href="#" class="logout">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </header>
+  
+    <?php include(ROOT_PATH . "/app/inclues/adminHeader.php"); ?>
     <!--admin page wapper starts-->
     <div class="admin-wrapper">
 
-        <!--left side ber starts-->
-        <div class="left-sidebar">
-            <ul>
-                <li><a href="../posts/index.html">Manage Posts</a></li>
-                <li><a href="../users/index.html">Manage Users</a></li>
-                <li><a href="../topics/index.html">Manage Topics</a></li>
-                <li><a href="../message.html">Message</a></li>
-            </ul>
-        </div>
-        <!--left side ber ends-->
+      
+    <?php include(ROOT_PATH . "/app/inclues/adminSidebar.php"); ?>
 
         <!--admin main content starts-->
         <div class="admin-content">
             <div class="bnt-group">
-                <a href="create.html" class="btn btn-big">Add Topics</a>
-                <a href="index.html" class="btn btn-big">Manage Topics</a>
+                <a href="create.php" class="btn btn-big">Add Posts</a>
+                <a href="index.php" class="btn btn-big">Manage Posts</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Add Topics</h2>
+                <h2 class="page-title">Edit Posts</h2>
                 <form action="create.html" method="post">
                     <div>
                         <label>Name</label>
@@ -68,7 +47,7 @@
                     </div>
                     
                     <div>
-                        <button type="submit" class="btn btn-submit">Add Topic</button>
+                        <button type="submit" class="btn btn-submit">Update Posts</button>
                     </div>
                 </form>
             </div>
@@ -82,6 +61,6 @@
     <!--Ckeditor-->
     <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
     <!--custom scrip-->
-    <script src="../../js/scripts.js"></script>
+    <script src="../../assets/js/scripts.js"></script>
 </body>
 </html>

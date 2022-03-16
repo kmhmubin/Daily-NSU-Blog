@@ -1,5 +1,6 @@
 
-<?php include('../../path.php');?>
+<?php include('../../path.php');
+include(ROOT_PATH . "/app/controllers/topics.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css">
 
-    <title>Admin add posts</title>
+    <title>Admin Edit topics</title>
 </head>
 <body>
   
@@ -30,39 +31,25 @@
         <!--admin main content starts-->
         <div class="admin-content">
             <div class="bnt-group">
-                <a href="create.php" class="btn btn-big">Add post</a>
-                <a href="index.php" class="btn btn-big">Manage Posts</a>
+                <a href="create.php" class="btn btn-big">Add Topics</a>
+                <a href="index.php" class="btn btn-big">Manage Topics</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Add post</h2>
-                <form action="create.html" method="post">
+                <h2 class="page-title">Edit Topics</h2>
+                <form action="edit.php" method="post">
+                <input type="hidden" name="name" value ="<?php echo $id; ?>" >
                     <div>
-                        <label>Title</label>
-                        <input type="text" name="title" class="text-input">
+                        <label>Name</label>
+                        <input type="text" name="name" value ="<?php echo $name; ?>" class="text-input">
                     </div>
 
                     <div>
-                        <label>Body</label>
-                        <textarea name="body" id="body"></textarea>
-                    </div>
-
-                    <div>
-                        <label>Image</label>
-                        <input type="file" name="image" class="text-input">
-                    </div>
-
-                    <div>
-                        <label>Select</label>
-                        <select name="topic" class="text-input">
-                            <option value="Academic">Academic</option>
-                            <option value="Examination">Examination</option>
-                            <option value="Notice">Notice</option>
-                            <option value="Research">Research</option>
-                        </select>
+                        <label>Description</label>
+                        <textarea name="body" id="body" <?php echo $description; ?>></textarea>
                     </div>
                     
                     <div>
-                        <button type="submit" class="btn btn-submit">Add Post</button>
+                        <button type="submit" name = "update-topic" class="btn btn-submit">Update Topic</button>
                     </div>
                 </form>
             </div>
