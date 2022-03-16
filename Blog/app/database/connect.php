@@ -1,9 +1,15 @@
 
-<?php 
-$conn=mysqli_connect("localhost", "root", "01768242342k1", "blog","3307"); 
-if(!$conn)
- { 
-     die(" Connection Error "); 
- } 
- 
+<?php
+// create database
+$serverName = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "blog";
+$port = 3306;
+// create connection
+$conn = mysqli_connect($serverName, $userName, $password, $dbName, $port);
+if (!$conn) {
+    die(" Connection Error ");
+}
+
 ?>
