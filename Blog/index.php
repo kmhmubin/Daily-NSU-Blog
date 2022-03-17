@@ -25,7 +25,7 @@ include(ROOT_PATH . "/app/database/db.php");
   <!--header connection-->
   <?php
   include(ROOT_PATH . "/app/includes/header.php");
-  include(ROOT_PATH . "/app/include/messages.php");
+  include(ROOT_PATH . "/app/includes/messages.php");
   ?>
 
   <!--page wapper starts-->

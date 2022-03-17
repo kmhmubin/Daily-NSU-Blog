@@ -28,24 +28,24 @@ include(ROOT_PATH . "/app/controllers/users.php");
 
     <!--sign up form starts-->
     <div class="signup-content">
-        <form action="signup.php">
+        <form action="login.php" method="POST">
             <h2 class="form-title">Log in</h2>
 
             <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
             <div>
                 <label>Username</label>
-                <input type="text" name="username" value=<?php echo $username; ?> class="text-input">
+                <input class="text-input" type="text" name="username" value=<?php echo $username; ?>>
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="password" name="password" value=<?php echo $password; ?> class="text-input">
+                <input class="text-input" type="password" name="password" value=<?php echo $password; ?>>
             </div>
 
             <div>
                 <button type="submit" name="login-btn" class="btn btn-big">Log in</button>
             </div>
-            <p>Or <a href="<?php echo Base_URL . '/signup.php' ?>">Register</a> </p>
+            <p>Or <a href="<?php echo Base_URL . 'signup.php' ?>">Register</a> </p>
         </form>
     </div>
     <!--sign up form starts-->

@@ -79,13 +79,13 @@ if (isset($_POST['signup-btn'])) {
 if (isset($_POST['login-btn'])) {
     $errors = validateLogin($_POST);
 
-    if (count($errors) == 0) {
+    if (count($errors) === 0) {
         $user = selectOne($table, ['username' => $_POST['username']]);
 
         if ($user && password_verify($_POST['password'], $user['password'])) {
             userLogin($user);
         } else {
-            array_push($errors, 'Wrong Text');
+            array_push($errors, 'Wrong Cardinal ID or Password');
         }
     }
 
