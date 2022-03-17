@@ -161,28 +161,28 @@ function delete($table, $id)
  */
 
 // insert data into users table
-$data = [
-    'username' => 'john',
-    'admin' => 1,
-    'email' => 'johndoe@gmail.com',
-    'password' => '123456'
-];
+// $data = [
+//     'username' => 'john',
+//     'admin' => 1,
+//     'email' => 'johndoe@gmail.com',
+//     'password' => '123456'
+// ];
 
 // insert data
-$id = create('users', $data);
-output($id);
+// $id = create('users', $data);
+// output($id);
 
 // update data into users table
-$data = [
-    'username' => 'luffy',
-    'admin' => 1,
-    'email' => 'monkeydluffy@gmail.com',
-    'password' => 'boahancock'
-];
+// $data = [
+//     'username' => 'luffy',
+//     'admin' => 1,
+//     'email' => 'monkeydluffy@gmail.com',
+//     'password' => 'boahancock'
+// ];
 
 // update data
-$query = update('users', 2, $data);
-output($query);
+// $query = update('users', 2, $data);
+// output($query);
 
 // delete data from users table
-$query = delete('users', 2);
+// $query = delete('users', 2);
