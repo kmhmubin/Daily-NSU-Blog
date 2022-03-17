@@ -23,6 +23,8 @@ function executeQuery($sql, $data)
 /**
  * SQL Query Template function for all tables 
  * Find specific data by id or other parameters
+ * return the result that match the query
+ * sql = "SELECT * FROM $table WHERE username= 'john' AND admin=1 "
  **/
 function selectAll($table, $conditions = [])
 {
@@ -65,6 +67,8 @@ function output($record)
 /**
  * SQL Query Template function for one table
  * Select one record from table
+ * return the result that match the query
+ * sql = "SELECT * FROM $table WHERE username= 'john' AND admin=1 "
  */
 
 function selectOne($table, $conditions)
@@ -86,5 +90,80 @@ function selectOne($table, $conditions)
     return $record;
 }
 
-$users = selectAll('users');
-output($users);
+/***
+ * SQL Query Template function for Insert data
+ * Insert data into table
+ * $sql = "INSERT INTO users SET username=?, admin=?, email=?, password=?"
+ */
+
+function create($table, $data)
+{
+    global $conn;
+    $sql = "INSERT INTO $table SET ";
+    $i = 0;
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $sql = $sql . " $key = ?";
+        } else {
+            $sql = $sql . ", $key = ?";
+        }
+        $i++;
+    }
+    $statement = executeQuery($sql, $data);
+    $id = $statement->insert_id;
+    return $id;
+}
+
+
+/***
+ * SQL Query Template function for Update data
+ * Update data into table
+ * $sql = "UPDATE users SET username=?, admin=?, email=?, password=? WHERE id=?"
+ */
+
+function update($table, $id, $data)
+{
+    global $conn;
+    $sql = "UPDATE $table SET ";
+    $i = 0;
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $sql = $sql . " $key = ?";
+        } else {
+            $sql = $sql . ", $key = ?";
+        }
+        $i++;
+    }
+    $sql = $sql . " WHERE id = ?";
+    $data['id'] = $id;
+    $statement = executeQuery($sql, $data);
+    return $statement->affected_rows;
+}
+
+
+/***
+ * SQL Query Template function for Delete data
+ * Delete data from table
+ * $sql = "DELETE FROM users WHERE id=?"
+ */
+
+function delete($table, $id)
+{
+    global $conn;
+    $sql = "DELETE FROM $table WHERE id = ?";
+    $statement = executeQuery($sql, ['id' => $id]);
+    return $statement->affected_rows;
+}
+
+
+// testing
+$data = [
+    'username' => 'john',
+    'admin' => 1,
+    'email' => 'johndoe@gmail.com',
+    'password' => '123456'
+];
+
+// insert data
+$id = Create('users', $data);
+output($id);
