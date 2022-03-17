@@ -17,10 +17,34 @@ $table = "users";
 
 
 /**
+ * Login User from session
+ */
+
+function userLogin($user)
+{
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['admin'] = $user['admin'];
+    $_SESSION['message'] = 'You are now logged in';
+    $_SESSION['type'] = 'success';
+
+    if ($_SESSION['admin']) {
+
+        header('location: ' . Base_URL . 'admin/dashboard.php');
+    } else {
+
+        header('location: ' . Base_URL . 'index.php');
+    }
+    exit();
+}
+
+
+/**
  * Check if the signup form is submitted
  * If it is, then check if the form has errors
  * If yes, then covert the password to hash
  * If yes, then insert the user data into the database
+ * If yes, then login the user
  */
 
 if (isset($_POST['signup-btn'])) {
@@ -34,6 +58,8 @@ if (isset($_POST['signup-btn'])) {
 
         $user_id = create($table, $_POST);
         $user = selectOne($table, ['id' => $user_id]);
+
+        userLogin($user);
     } else {
         $username = $_POST['username'];
         $email = $_POST['email'];

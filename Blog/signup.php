@@ -54,7 +54,7 @@
             <div>
                 <button type="submit" name="signup-btn" class="btn btn-big">Sign Up</button>
             </div>
-            <p>Or <a href="<?php echo Base_URL . '/login.php' ?>">Log in</a> </p>
+            <p>Or <a href="<?php echo Base_URL . 'login.php' ?>">Log in</a> </p>
         </form>
     </div>
 
