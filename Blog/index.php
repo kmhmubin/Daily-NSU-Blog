@@ -23,7 +23,10 @@ include(ROOT_PATH . "/app/database/db.php");
 <body>
 
   <!--header connection-->
-  <?php include(ROOT_PATH . "/app/includes/header.php") ?>
+  <?php
+  include(ROOT_PATH . "/app/includes/header.php");
+  include(ROOT_PATH . "/app/include/messages.php");
+  ?>
 
   <!--page wapper starts-->
   <div class="page-wrapper">
