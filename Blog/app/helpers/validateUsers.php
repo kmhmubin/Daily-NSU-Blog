@@ -14,9 +14,10 @@ function validateUser($user)
         array_push($errors, 'Password is required');
     }
 
-    if (empty($user['passwordConf'] !== $_POST['password'])) {
+    if ($user['passwordConf'] !== $user['password']) {
         array_push($errors, 'Password do not match');
     }
+
     $existingUser = selectOne('users', ['email' => $user['email']]);
     if (isset($existingUser)) {
         array_push($errors, 'Email already Exists');
