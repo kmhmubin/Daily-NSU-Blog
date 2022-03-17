@@ -67,3 +67,28 @@ if (isset($_POST['signup-btn'])) {
         $passwordConf = $_POST['passwordConf'];
     }
 }
+
+
+/**
+ * Check if the login form is submitted
+ * If it is, then check if the form has errors
+ * If yes, then check if the user exists in the database
+ * If yes, then login the user
+ */
+
+if (isset($_POST['login-btn'])) {
+    $errors = validateLogin($_POST);
+
+    if (count($errors) == 0) {
+        $user = selectOne($table, ['username' => $_POST['username']]);
+
+        if ($user && password_verify($_POST['password'], $user['password'])) {
+            userLogin($user);
+        } else {
+            array_push($errors, 'Wrong Text');
+        }
+    }
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+}
