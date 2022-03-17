@@ -156,7 +156,11 @@ function delete($table, $id)
 }
 
 
-// testing
+/**
+ * Test above functions
+ */
+
+// insert data into users table
 $data = [
     'username' => 'john',
     'admin' => 1,
@@ -165,5 +169,20 @@ $data = [
 ];
 
 // insert data
-$id = Create('users', $data);
+$id = create('users', $data);
 output($id);
+
+// update data into users table
+$data = [
+    'username' => 'luffy',
+    'admin' => 1,
+    'email' => 'monkeydluffy@gmail.com',
+    'password' => 'boahancock'
+];
+
+// update data
+$query = update('users', 2, $data);
+output($query);
+
+// delete data from users table
+$query = delete('users', 2);
