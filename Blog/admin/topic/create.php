@@ -1,5 +1,6 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/topics.php');
 ?>
 
 
@@ -38,12 +39,12 @@ include("../../path.php");
         <!--admin main content starts-->
         <div class="admin-content">
             <div class="bnt-group">
-                <a href="create.html" class="btn btn-big">Add Topics</a>
-                <a href="index.html" class="btn btn-big">Manage Topics</a>
+                <a href="create.php" class="btn btn-big">Add Topics</a>
+                <a href="index.php" class="btn btn-big">Manage Topics</a>
             </div>
             <div class="content">
                 <h2 class="page-title">Add Topics</h2>
-                <form action="create.html" method="post">
+                <form action="create.php" method="post">
                     <div>
                         <label>Name</label>
                         <input type="text" name="name" class="text-input">
@@ -51,11 +52,11 @@ include("../../path.php");
 
                     <div>
                         <label>Description</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="description" id="body"></textarea>
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-submit">Add Topic</button>
+                        <button type="submit" class="btn btn-submit" name="add-topic">Add Topic</button>
                     </div>
                 </form>
             </div>
