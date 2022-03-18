@@ -1,8 +1,10 @@
-
-<?php include('../../path.php');?>
+<?php
+include("../../path.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +14,25 @@
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css">
 
-    <title>Admin  Edit Post</title>
+    <title>Admin Edit Post</title>
 </head>
+
 <body>
-  
-    <?php include(ROOT_PATH . "/app/inclues/adminHeader.php"); ?>
+
+    <!-- admin Header  -->
+
+    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
+
     <!--admin page wapper starts-->
     <div class="admin-wrapper">
 
-      
-    <?php include(ROOT_PATH . "/app/inclues/adminSidebar.php"); ?>
+
+        <!-- side bar -->
+        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
         <!--admin main content starts-->
         <div class="admin-content">
@@ -45,15 +52,15 @@
                         <label>Description</label>
                         <textarea name="body" id="body"></textarea>
                     </div>
-                    
+
                     <div>
-                        <button type="submit" class="btn btn-submit">Update Posts</button>
+                        <button type="submit" class="btn btn-submit">Update Post</button>
                     </div>
                 </form>
             </div>
         </div>
         <!--admin main contant ends-->
-    </div>   
+    </div>
 
 
     <!--Jquary-->
@@ -63,4 +70,5 @@
     <!--custom scrip-->
     <script src="../../assets/js/scripts.js"></script>
 </body>
+
 </html>

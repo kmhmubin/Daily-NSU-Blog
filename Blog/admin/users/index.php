@@ -1,8 +1,11 @@
+<?php
+include("../../path.php");
+?>
 
-<?php include('../../path.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +15,25 @@
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css">
 
     <title>Admin Section - Manage Users</title>
 </head>
+
 <body>
-  
-    <?php include(ROOT_PATH . "/app/inclues/adminHeader.php"); ?>
+
+    <!-- admin Header  -->
+
+    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
+
     <!--admin page wapper starts-->
     <div class="admin-wrapper">
 
-      
-    <?php include(ROOT_PATH . "/app/inclues/adminSidebar.php"); ?>
+
+        <!-- side bar -->
+        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
         <!--admin main content starts-->
         <div class="admin-content">
@@ -36,40 +44,37 @@
             <div class="content">
                 <h2 class="page-title">Manage-Users</h2>
                 <table>
-                   <thead>
-                       <th>SN.</th>
-                       <th>Users Name</th>
-                       <th>Role</th>
-                       <th colspan="2">Actions</th>
-                   </thead> 
-                   <tbody>
-                    <tr>
-                       <td>1</td>
-                       <td>MSK</td>
-                       <td>Admin</td>
-                       <td><a href="#" class="edit">Edit</a></td>
-                       <td><a href="#" class="delete">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>MSK</td>
-                        <td>Admin</td>
-                        <td><a href="#" class="edit">Edit</a></td>
-                        <td><a href="#" class="delete">Delete</a></td>
-                     </tr>
-                   </tbody>
+                    <thead>
+                        <th>SN.</th>
+                        <th>Users Name</th>
+                        <th>Role</th>
+                        <th colspan="2">Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>MSK</td>
+                            <td>Admin</td>
+                            <td><a href="#" class="edit">Edit</a></td>
+                            <td><a href="#" class="delete">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MSK</td>
+                            <td>Admin</td>
+                            <td><a href="#" class="edit">Edit</a></td>
+                            <td><a href="#" class="delete">Delete</a></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
         <!--admin main contant ends-->
-    </div>   
+    </div>
 
 
-    <!--Jquary-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--Ckeditor-->
-    <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
     <!--custom scrip-->
     <script src="../../assets/js/scripts.js"></script>
 </body>
+
 </html>

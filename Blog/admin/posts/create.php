@@ -1,8 +1,11 @@
+<?php
+include("../../path.php");
+?>
 
-<?php include('../../path.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +15,25 @@
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css">
 
     <title>Admin add posts</title>
 </head>
+
 <body>
-  
-    <?php include(ROOT_PATH . "/app/inclues/adminHeader.php"); ?>
+
+    <!-- admin Header  -->
+
+    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
+
     <!--admin page wapper starts-->
     <div class="admin-wrapper">
 
-      
-    <?php include(ROOT_PATH . "/app/inclues/adminSidebar.php"); ?>
+
+        <!-- side bar -->
+        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
         <!--admin main content starts-->
         <div class="admin-content">
@@ -60,7 +68,7 @@
                             <option value="Research">Research</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <button type="submit" class="btn btn-submit">Add Post</button>
                     </div>
@@ -68,7 +76,7 @@
             </div>
         </div>
         <!--admin main contant ends-->
-    </div>   
+    </div>
 
 
     <!--Jquary-->
@@ -78,4 +86,5 @@
     <!--custom scrip-->
     <script src="../../assets/js/scripts.js"></script>
 </body>
+
 </html>

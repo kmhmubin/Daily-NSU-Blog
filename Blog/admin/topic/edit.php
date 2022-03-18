@@ -1,9 +1,11 @@
+<?php
+include("../../path.php");
+?>
 
-<?php include('../../path.php');
-include(ROOT_PATH . "/app/controllers/topics.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,20 +15,25 @@ include(ROOT_PATH . "/app/controllers/topics.php"); ?>
     <!--Google fonts link-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../../assets/css/admin.css">
 
     <title>Admin Edit topics</title>
 </head>
+
 <body>
-  
-    <?php include(ROOT_PATH . "/app/inclues/adminHeader.php"); ?>
+
+    <!-- admin Header  -->
+
+    <?php include(ROOT_PATH . "/app/includes/adminHeader.php"); ?>
+
     <!--admin page wapper starts-->
     <div class="admin-wrapper">
 
-      
-    <?php include(ROOT_PATH . "/app/inclues/adminSidebar.php"); ?>
+
+        <!-- side bar -->
+        <?php include(ROOT_PATH . "/app/includes/adminSidebar.php"); ?>
 
         <!--admin main content starts-->
         <div class="admin-content">
@@ -37,25 +44,25 @@ include(ROOT_PATH . "/app/controllers/topics.php"); ?>
             <div class="content">
                 <h2 class="page-title">Edit Topics</h2>
                 <form action="edit.php" method="post">
-                <input type="hidden" name="name" value ="<?php echo $id; ?>" >
+                    <input type="hidden" name="name" value="<?php echo $id; ?>">
                     <div>
                         <label>Name</label>
-                        <input type="text" name="name" value ="<?php echo $name; ?>" class="text-input">
+                        <input type="text" name="name" value="<?php echo $name; ?>" class="text-input">
                     </div>
 
                     <div>
                         <label>Description</label>
                         <textarea name="body" id="body" <?php echo $description; ?>></textarea>
                     </div>
-                    
+
                     <div>
-                        <button type="submit" name = "update-topic" class="btn btn-submit">Update Topic</button>
+                        <button type="submit" name="update-topic" class="btn btn-submit">Update Topic</button>
                     </div>
                 </form>
             </div>
         </div>
         <!--admin main contant ends-->
-    </div>   
+    </div>
 
 
     <!--Jquary-->
@@ -65,4 +72,5 @@ include(ROOT_PATH . "/app/controllers/topics.php"); ?>
     <!--custom scrip-->
     <script src="../../assets/js/scripts.js"></script>
 </body>
+
 </html>
