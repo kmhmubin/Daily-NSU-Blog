@@ -1,5 +1,6 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/users.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,35 +44,41 @@ include("../../path.php");
             </div>
             <div class="content">
                 <h2 class="page-title">Add Topics</h2>
-                <form action="create.html" method="post">
+
+                <!-- helpers connection-->
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+
+
+                <form action="create.php" method="post">
                     <div>
                         <label>Username</label>
-                        <input type="text" name="username" class="text-input">
+                        <input type="text" name="username" class="text-input" value="<?php echo $username; ?>">
                     </div>
                     <div>
                         <label>Email</label>
-                        <input type="email" name="email" class="text-input">
+                        <input type="email" name="email" class="text-input" value="<?php echo $email; ?>">
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" name="password" class="text-input">
+                        <input type="password" name="password" class="text-input" value="<?php echo $password; ?>">
                     </div>
                     <div>
                         <label>Password Confirmtion</label>
-                        <input type="password" name="passwordConf" class="text-input">
+                        <input type="password" name="passwordConf" class="text-input" value="<?php echo $passwordConf; ?>">
                     </div>
 
                     <div>
-                        <label>Select Role</label>
-                        <select name="topic" class="text-input">
-                            <option value="Admin">Admin</option>
-                            <option value="Author">Author</option>
-                            <option value="Developer">Developer</option>
-                        </select>
+                        <?php if (isset($admin) && $admin === 1) : ?>
+                            <label>Admin</label>
+                            <input type="checkbox" name="admin" checked>
+                        <?php else : ?>
+                            <label>Admin</label>
+                            <input type="checkbox" name="admin">
+                        <?php endif; ?>
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-submit">Add User</button>
+                        <button type="submit" class="btn btn-submit" name="create-admin">Add User</button>
                     </div>
                 </form>
             </div>

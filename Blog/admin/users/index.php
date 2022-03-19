@@ -1,5 +1,6 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/users.php');
 ?>
 
 
@@ -43,28 +44,28 @@ include("../../path.php");
             </div>
             <div class="content">
                 <h2 class="page-title">Manage-Users</h2>
+
+                <?php include(ROOT_PATH . "/app/includes/messages.php") ?>
+
+
                 <table>
                     <thead>
                         <th>SN.</th>
                         <th>Users Name</th>
-                        <th>Role</th>
+                        <th>Email</th>
                         <th colspan="2">Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>MSK</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>MSK</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                        </tr>
+                        <?php foreach ($admin_users as $key => $user) : ?>
+
+                            <tr>
+                                <td><?php echo $key + 1 ?></td>
+                                <td><?php echo $user['username'] ?></td>
+                                <td><?php echo $user['email'] ?></td>
+                                <td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
+                                <td><a href="index.php?del_id=<?php echo $user['id'] ?>" class="delete">Delete</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
