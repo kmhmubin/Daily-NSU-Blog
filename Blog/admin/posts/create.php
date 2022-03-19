@@ -88,8 +88,13 @@ include(ROOT_PATH . '/app/controllers/posts.php');
                         </select>
                     </div>
                     <div>
-                        <label>Published</label>
-                        <input type="checkbox" name="published">
+                        <?php if (empty($published)) : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published">
+                        <?php else : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published" checked>
+                        <?php endif; ?>
                     </div>
                     <div>
                         <button type="submit" name="add-post" class="btn btn-submit">Add Post</button>

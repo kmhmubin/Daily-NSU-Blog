@@ -77,14 +77,14 @@ include(ROOT_PATH . '/app/controllers/posts.php');
                                 </td>
                                 <?php if ($post['published']) : ?>
                                     <td>
-                                        <a href="" class="unpublish">
+                                        <a href="edit.php?published=0&p_id=<?php echo $post['id'] ?>" class="unpublish">
                                             Unpublish
                                         </a>
                                     </td>
 
                                 <?php else : ?>
                                     <td>
-                                        <a href="" class="publish">
+                                        <a href="edit.php?published=1&p_id=<?php echo $post['id'] ?>" class="publish">
                                             Publish
                                         </a>
                                     </td>
