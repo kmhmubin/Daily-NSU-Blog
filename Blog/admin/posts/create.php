@@ -1,7 +1,7 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/posts.php');
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ include("../../path.php");
             </div>
             <div class="content">
                 <h2 class="page-title">Add post</h2>
-                <form action="create.html" method="post">
+                <form action="create.php" method="post">
                     <div>
                         <label>Title</label>
                         <input type="text" name="title" class="text-input">
@@ -70,7 +70,7 @@ include("../../path.php");
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-submit">Add Post</button>
+                        <button type="submit" name="add-post" class="btn btn-submit">Add Post</button>
                     </div>
                 </form>
             </div>

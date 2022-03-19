@@ -1,7 +1,7 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/posts.php');
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
