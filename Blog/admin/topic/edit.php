@@ -1,5 +1,6 @@
 <?php
 include("../../path.php");
+include(ROOT_PATH . '/app/controllers/topics.php');
 ?>
 
 
@@ -43,16 +44,18 @@ include("../../path.php");
             </div>
             <div class="content">
                 <h2 class="page-title">Edit Topics</h2>
-                <form action="edit.php" method="post">
+                <form action="edit.php" method="POST">
                     <input type="hidden" name="name" value="<?php echo $id; ?>">
                     <div>
                         <label>Name</label>
-                        <input type="text" name="name" value="<?php echo $name; ?>" class="text-input">
+                        <input type="text" class="text-input" name="name" value="<?php echo $name; ?>">
                     </div>
 
                     <div>
                         <label>Description</label>
-                        <textarea name="body" id="body" <?php echo $description; ?>></textarea>
+                        <textarea name="description" id="body">
+                            <?php echo $description; ?>
+                        </textarea>
                     </div>
 
                     <div>
