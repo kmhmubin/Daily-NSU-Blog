@@ -44,8 +44,12 @@ include(ROOT_PATH . '/app/controllers/topics.php');
             </div>
             <div class="content">
                 <h2 class="page-title">Edit Topics</h2>
+
+                <!-- helpers connection-->
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+
                 <form action="edit.php" method="POST">
-                    <input type="hidden" name="name" value="<?php echo $id; ?>">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div>
                         <label>Name</label>
                         <input type="text" class="text-input" name="name" value="<?php echo $name; ?>">

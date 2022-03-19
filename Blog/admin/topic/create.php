@@ -44,15 +44,21 @@ include(ROOT_PATH . '/app/controllers/topics.php');
             </div>
             <div class="content">
                 <h2 class="page-title">Add Topics</h2>
+
+                <!-- helpers connection-->
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+
                 <form action="create.php" method="post">
                     <div>
                         <label>Name</label>
-                        <input type="text" name="name" class="text-input">
+                        <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
                     </div>
 
                     <div>
                         <label>Description</label>
-                        <textarea name="description" id="body"></textarea>
+                        <textarea name="description" id="body">
+                            <?php echo $description; ?>
+                        </textarea>
                     </div>
 
                     <div>
