@@ -43,6 +43,10 @@ include(ROOT_PATH . '/app/controllers/posts.php');
             </div>
             <div class="content">
                 <h2 class="page-title">Manage-post</h2>
+
+                <?php include(ROOT_PATH . "/app/includes/messages.php") ?>
+
+
                 <table>
                     <thead>
                         <th>SN.</th>
@@ -51,22 +55,44 @@ include(ROOT_PATH . '/app/controllers/posts.php');
                         <th colspan="3">Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>25th Convocation</td>
-                            <td>MSK</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">Publish</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>25th Convocation</td>
-                            <td>SKN</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">Publish</a></td>
-                        </tr>
+                    <tbody>
+
+                        <?php foreach ($posts as $key => $post) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo $key + 1 ?></td>
+                                <td>
+                                    <?php echo $post['title'] ?></td>
+                                <td>
+                                    Jonny</td>
+                                <td>
+                                    <a href="edit.php?id=<?php echo $post['id']; ?>" class="edit">
+                                        Edit
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="index.php?del_id=<?php echo $post['id'] ?>" class="delete">
+                                        Delete
+                                    </a>
+                                </td>
+                                <?php if ($post['published']) : ?>
+                                    <td>
+                                        <a href="" class="unpublish">
+                                            Unpublish
+                                        </a>
+                                    </td>
+
+                                <?php else : ?>
+                                    <td>
+                                        <a href="" class="publish">
+                                            Publish
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
+                            </tr>
+                        <?php endforeach; ?>
+
+                    </tbody>
                     </tbody>
                 </table>
             </div>

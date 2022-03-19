@@ -43,15 +43,21 @@ include(ROOT_PATH . '/app/controllers/posts.php');
             </div>
             <div class="content">
                 <h2 class="page-title">Add post</h2>
-                <form action="create.php" method="post">
+
+                <!-- helpers connection-->
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
+
+                <form action="create.php" method="post" enctype="multipart/form-data">
                     <div>
                         <label>Title</label>
-                        <input type="text" name="title" class="text-input">
+                        <input type="text" name="title" class="text-input" value="<?php echo $title; ?>">
                     </div>
 
                     <div>
                         <label>Body</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="body" id="body">
+                            <?php echo $body; ?>
+                        </textarea>
                     </div>
 
                     <div>
@@ -61,14 +67,30 @@ include(ROOT_PATH . '/app/controllers/posts.php');
 
                     <div>
                         <label>Select</label>
-                        <select name="topic" class="text-input">
-                            <option value="Academic">Academic</option>
-                            <option value="Examination">Examination</option>
-                            <option value="Notice">Notice</option>
-                            <option value="Research">Research</option>
+                        <select name="topic_id" class="text-input">
+                            <option value="">Select topic</option>
+                            <?php foreach ($topics as $key => $topic) : ?>
+
+                                <!-- checking the selection -->
+                                <?php if (!empty($topic_id) && $topic_id == $topic['id']) : ?>
+                                    <option value="<?php echo $topic['id']; ?>" selected>
+                                        <?php echo $topic['name']; ?>
+                                    </option>
+                                <?php else : ?>
+                                    <option value="<?php echo $topic['id']; ?>">
+                                        <?php echo $topic['name']; ?>
+                                    </option>
+                                <?php endif; ?>
+
+
+                            <?php endforeach; ?>
+
                         </select>
                     </div>
-
+                    <div>
+                        <label>Published</label>
+                        <input type="checkbox" name="published">
+                    </div>
                     <div>
                         <button type="submit" name="add-post" class="btn btn-submit">Add Post</button>
                     </div>
