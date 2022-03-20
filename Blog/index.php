@@ -5,11 +5,15 @@ include(ROOT_PATH . '/app/controllers/topics.php');
 $posts = array();
 $postTitle = 'Recent Posts';
 /***
+ * Get  all posts from a single topic
  * Search posts
  * select all the published posts
  */
 
-if (isset($_POST['search-term'])) {
+if (isset($_GET['t_id'])) {
+  $posts = getPostsByTopicId($_GET['t_id']);
+  $postTitle = "Posts in '" . $_GET['name'] . "'";
+} elseif (isset($_POST['search-term'])) {
 
   $posts = searchPosts($_POST['search-term']);
   $postTitle = "Search results for '" . $_POST['search-term'] . "'";
@@ -89,7 +93,7 @@ if (isset($_POST['search-term'])) {
             <img src="<?php echo Base_URL . 'assets/images/' . $post['image']; ?>" alt="" class="post-img" />
             <div class="post-preview">
               <h2>
-                <a href="single.php">
+                <a href="single.php?id=<?php echo $post['id']; ?>">
                   <?php echo $post['title']; ?>
                 </a>
               </h2>
@@ -103,7 +107,7 @@ if (isset($_POST['search-term'])) {
               <!-- <p class="preview-text">
                 <?php echo html_entity_decode(substr($post['body'], 0, 150) . '...'); ?>
               </p> -->
-              <a href="single.php" class="btn read-more">Read More</a>
+              <a href="single.php?id=<?php echo $post['id']; ?>" class="btn read-more">Read More</a>
             </div>
           </div>
 
@@ -125,7 +129,12 @@ if (isset($_POST['search-term'])) {
           <ul>
             <?php foreach ($topics as $key => $topic) : ?>
 
-              <li><a href=""><?php echo $topic['name']; ?></a></li>
+              <li>
+                <a href="<?php echo Base_URL . 'index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>">
+                  <?php echo $topic['name']; ?>
+                </a>
+              </li>
+
             <?php endforeach; ?>
 
           </ul>

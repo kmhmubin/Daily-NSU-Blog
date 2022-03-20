@@ -188,6 +188,31 @@ function getPublishedPosts()
 
 
 /**
+ * Get all posts by topics
+ * 
+ */
+
+function getPostsByTopicId($topic_id)
+{
+    global $conn;
+    $sql = "SELECT 
+            p.*, u.username 
+            FROM posts as p 
+            JOIN users as u 
+            ON p.user_id = u.id 
+            WHERE p.published = ?
+            AND p.topic_id = ? 
+            ORDER BY p.created_at DESC";
+
+    $statement = executeQuery($sql, ['published' => 1, 'topic_id' => $topic_id]);
+    $result = $statement->get_result();
+    $posts = $result->fetch_all(MYSQLI_ASSOC);
+    return $posts;
+}
+
+
+
+/**
  * SQL Query for search posts
  * Get all published posts from posts table
  * Join users table and post table

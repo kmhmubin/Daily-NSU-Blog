@@ -1,4 +1,19 @@
-<?php include('path.php'); ?>
+<?php
+include('path.php');
+include(ROOT_PATH . '/app/controllers/posts.php');
+
+/**
+ * Get the posts from the database
+ */
+
+if (isset($_GET['id'])) {
+  $post = selectOne('posts', ['id' => $_GET['id']]);
+  // output($post);
+}
+
+$topics = selectAll('topics');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +29,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
   <!--Custom CSS Styling-->
   <link rel="stylesheet" href="assets/css/style.css">
-  <title>NSUer's Blog</title>
+  <title> <?php echo $post['title']; ?> | NSUer's Blog</title>
 </head>
 
 <body>
@@ -30,37 +45,10 @@
       <div class="main-content-wrapper">
         <div class="main-content single">
           <h2 class="post-title">
-            25th Convocation Extended date of degree application
+            <?php echo ucwords($post['title']); ?>
           </h2>
           <div class="post-content">
-            <p>
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application gor graduation through online to join the
-              next convocation are requested to submit their degree
-              application with in 15 March 2022.
-            </p>
-            <p>
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application gor graduation through online to join the
-              next convocation are requested to submit their degree
-              application with in 15 March 2022.
-            </p>
-            <p>
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application gor graduation through online to join the
-              next convocation are requested to submit their degree
-              application with in 15 March 2022.
-            </p>
-            <p>
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application gor graduation through online to join the
-              next convocation are requested to submit their degree
-              application with in 15 March 2022.
-            </p>
+            <?php echo html_entity_decode($post['body']); ?>
           </div>
           <!-- Comments section -->
           <section>
@@ -148,15 +136,18 @@
         <div class="section topics">
           <h2 class="section-title">Topics</h2>
           <ul>
-            <li><a href="">Academic</a></li>
-            <li><a href="">Examinations</a></li>
-            <li><a href="">Noties</a></li>
-            <li><a href="">Rescarch</a></li>
-            <li><a href="">Campus Job</a></li>
-            <li><a href="">Motivation</a></li>
-            <li><a href="">Life lessom</a></li>
+            <?php foreach ($topics as $topic) : ?>
+              <li>
+                <a href="<?php echo Base_URL . 'index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']; ?>">
+                  <?php echo $topic['name']; ?>
+                </a>
+              </li>
+            <?php endforeach; ?>
           </ul>
         </div>
+
+
+
         <div class="comment">
           <textarea name="message" class="text-input contact-input" placeholder="Add your comment....."></textarea><br>
           <button type="submit" class="btn btn-big contact-btn">
