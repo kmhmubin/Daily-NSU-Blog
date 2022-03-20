@@ -33,7 +33,7 @@ function userLogin($user)
 
     if ($_SESSION['admin']) {
 
-        header('location: ' . Base_URL . 'admin/posts/index.php');
+        header('location: ' . Base_URL . 'admin/dashboard.php');
     } else {
 
         header('location: ' . Base_URL . 'index.php');
