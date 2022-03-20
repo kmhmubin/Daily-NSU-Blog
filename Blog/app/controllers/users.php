@@ -5,6 +5,7 @@ include_once(ROOT_PATH . "/app/database/db.php");
 
 // import validation functions
 include(ROOT_PATH . "/app/helpers/validateUsers.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 
 // error array
 $errors = array();
@@ -116,6 +117,7 @@ if (isset($_POST['login-btn'])) {
  */
 
 if (isset($_GET['del_id'])) {
+    adminOnly();
     $count = delete($table, $_GET['del_id']);
     $_SESSION['message'] = 'User deleted successfully';
     $_SESSION['type'] = 'success';
@@ -143,6 +145,7 @@ if (isset($_GET['id'])) {
  */
 
 if (isset($_POST['update-user'])) {
+    adminOnly();
     $errors = validateUser($_POST);
 
     if (count($errors) == 0) {
