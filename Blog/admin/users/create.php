@@ -40,11 +40,10 @@ adminOnly();
         <!--admin main content starts-->
         <div class="admin-content">
             <div class="bnt-group">
-                <a href="create.php" class="btn btn-big">Add User</a>
                 <a href="index.php" class="btn btn-big">Manage Users</a>
             </div>
             <div class="content">
-                <h2 class="page-title">Add Topics</h2>
+                <h2 class="page-title">Add User</h2>
 
                 <!-- helpers connection-->
                 <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>

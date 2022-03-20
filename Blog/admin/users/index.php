@@ -54,6 +54,7 @@ adminOnly();
                         <th>SN.</th>
                         <th>Users Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th colspan="2">Actions</th>
                     </thead>
                     <tbody>
@@ -63,6 +64,11 @@ adminOnly();
                                 <td><?php echo $key + 1 ?></td>
                                 <td><?php echo $user['username'] ?></td>
                                 <td><?php echo $user['email'] ?></td>
+                                <?php if ($user['admin'] === 1) : ?>
+                                    <td>Admin</td>
+                                <?php else : ?>
+                                    <td>User</td>
+                                <?php endif; ?>
                                 <td><a href="edit.php?id=<?php echo $user['id']; ?>" class="edit">Edit</a></td>
                                 <td><a href="index.php?del_id=<?php echo $user['id'] ?>" class="delete">Delete</a></td>
                             </tr>
