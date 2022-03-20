@@ -159,6 +159,64 @@ function delete($table, $id)
 }
 
 
+
+/**
+ * SQL Query for get published posts
+ * Get all published posts from posts table
+ * Join users table and post table
+ * find and match user id with post user id
+ * return the result that match the query
+ * sql = "SELECT * FROM posts JOIN users ON posts.user_id = users.id WHERE posts.published = 1"
+ */
+
+function getPublishedPosts()
+{
+    global $conn;
+    $sql = "SELECT 
+            p.*, u.username 
+            FROM posts as p 
+            JOIN users as u 
+            ON p.user_id = u.id 
+            WHERE p.published = ? 
+            ORDER BY p.created_at DESC";
+
+    $statement = executeQuery($sql, ['published' => 1]);
+    $result = $statement->get_result();
+    $posts = $result->fetch_all(MYSQLI_ASSOC);
+    return $posts;
+}
+
+
+/**
+ * SQL Query for search posts
+ * Get all published posts from posts table
+ * Join users table and post table
+ * find and match user id with post user id
+ * find and match post title with search keyword
+ * return the result that match the query
+ * sql = "SELECT * FROM posts JOIN users ON posts.user_id = users.id WHERE posts.published = 1 AND posts.title LIKE '%$keyword%' OR posts.body LIKE '%$keyword%'"
+ */
+
+function searchPosts($term)
+{
+    global $conn;
+    $keyword = '%' . $term . '%';
+    $sql = "SELECT 
+            p.*, u.username 
+            FROM posts as p 
+            JOIN users as u 
+            ON p.user_id = u.id 
+            WHERE p.published = ? 
+            AND p.title LIKE ?
+            OR p.body LIKE ?";
+
+    $statement = executeQuery($sql, ['published' => 1, 'title' => $keyword, 'body' => $keyword]);
+    $result = $statement->get_result();
+    $posts = $result->fetch_all(MYSQLI_ASSOC);
+    return $posts;
+}
+
+
 /**
  * Test above functions
  */

@@ -1,6 +1,23 @@
 <?php
 include('path.php');
 include(ROOT_PATH . '/app/controllers/topics.php');
+
+$posts = array();
+$postTitle = 'Recent Posts';
+/***
+ * Search posts
+ * select all the published posts
+ */
+
+if (isset($_POST['search-term'])) {
+
+  $posts = searchPosts($_POST['search-term']);
+  $postTitle = "Search results for '" . $_POST['search-term'] . "'";
+} else {
+  $posts = getPublishedPosts();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,69 +79,46 @@ include(ROOT_PATH . '/app/controllers/topics.php');
     <div class="content clearfix">
       <!--main-container-->
       <div class="main-content">
-        <h1 class="recent-post-title">Recent Post</h1>
+        <h1 class="recent-post-title">
+          <?php echo $postTitle; ?>
+        </h1>
 
-        <div class="post clearfix">
-          <img src="assets/images/convocation.jpg" alt="" class="post-img" />
-          <div class="post-preview">
-            <h2>
-              <a href="single.php">25th Convocation Extended date of degree application</a>
-            </h2>
-            <i class="far fa-user"> MS. Kabir</i>
-            &nbsp;
-            <i class="far fa-calendar"> Mar 7, 2022</i>
-            <p class="preview-text">
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application for graduation through online.
-            </p>
-            <a href="single.php" class="btn read-more">Read More</a>
-          </div>
-        </div>
+        <?php foreach ($posts as $post) : ?>
 
-        <div class="post clearfix">
-          <img src="assets/images/convocation.jpg" alt="" class="post-img" />
-          <div class="post-preview">
-            <h2>
-              <a href="single.php">25th Convocation Extended date of degree application</a>
-            </h2>
-            <i class="far fa-user"> MS. Kabir</i>
-            &nbsp;
-            <i class="far fa-calendar"> Mar 7, 2022</i>
-            <p class="preview-text">
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application for graduation through online.
-            </p>
-            <a href="single.php" class="btn read-more">Read More</a>
+          <div class="post clearfix">
+            <img src="<?php echo Base_URL . 'assets/images/' . $post['image']; ?>" alt="" class="post-img" />
+            <div class="post-preview">
+              <h2>
+                <a href="single.php">
+                  <?php echo $post['title']; ?>
+                </a>
+              </h2>
+              <i class="far fa-user">
+                <?php echo ucfirst($post['username']); ?>
+              </i>
+              &nbsp;
+              <i class="far fa-calendar">
+                <?php echo date('F j, Y', strtotime($post['created_at'])); ?>
+              </i>
+              <!-- <p class="preview-text">
+                <?php echo html_entity_decode(substr($post['body'], 0, 150) . '...'); ?>
+              </p> -->
+              <a href="single.php" class="btn read-more">Read More</a>
+            </div>
           </div>
-        </div>
 
-        <div class="post clearfix">
-          <img src="assets/images/convocation.jpg" alt="" class="post-img" />
-          <div class="post-preview">
-            <h2>
-              <a href="single.php">25th Convocation Extended date of degree application</a>
-            </h2>
-            <i class="far fa-user"> MS. Kabir</i>
-            &nbsp;
-            <i class="far fa-calendar"> Mar 7, 2022</i>
-            <p class="preview-text">
-              1. Students having completed all requires of their respective
-              degree in or before the Fall-2021 semester and yet to submit
-              degree application for graduation through online.
-            </p>
-            <a href="single.php" class="btn read-more">Read More</a>
-          </div>
-        </div>
+        <?php endforeach; ?>
+
       </div>
       <!--main-container-->
       <div class="sidebar">
         <div class="section scarch">
-          <h2 class="section-title">Scarch</h2>
+          <h2 class="section-title">Search</h2>
+
           <form action="index.php" method="post">
-            <input type="text" name="scarch-term" class="text-input" placeholder="Scarch...." /><br />
+            <input type="text" name="search-term" class="text-input" placeholder="search...." />
           </form>
+
         </div>
         <div class="section topics">
           <h2 class="section-title">Topics</h2>

@@ -60,11 +60,16 @@ include(ROOT_PATH . '/app/controllers/posts.php');
                         <?php foreach ($posts as $key => $post) : ?>
                             <tr>
                                 <td>
-                                    <?php echo $key + 1 ?></td>
+                                    <?php echo $key + 1 ?>
+                                </td>
                                 <td>
-                                    <?php echo $post['title'] ?></td>
-                                <td>
-                                    Jonny</td>
+                                    <?php echo $post['title'] ?>
+                                </td>
+                                <?php if (isset($_SESSION['id'])) : ?>
+                                    <td>
+                                        <?php echo $_SESSION['username'] ?>
+                                    </td>
+                                <?php endif; ?>
                                 <td>
                                     <a href="edit.php?id=<?php echo $post['id']; ?>" class="edit">
                                         Edit
