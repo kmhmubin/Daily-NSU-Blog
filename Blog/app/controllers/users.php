@@ -18,7 +18,7 @@ $table = "users";
 
 
 // select users from database
-$admin_users = selectAll($table, ['admin' => 1]);
+$admin_users = selectAll($table);
 
 /**
  * Login User from session
@@ -58,10 +58,9 @@ if (isset($_POST['signup-btn']) || isset($_POST['create-admin'])) {
 
     $errors = validateUser($_POST);
 
-    if (count($errors) == 0) {
+    if (count($errors) === 0) {
         unset($_POST['signup-btn'], $_POST['passwordConf'], $_POST['create-admin']);
 
-        $_POST['admin'] = 0;
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         if (isset($_POST['admin'])) {
@@ -127,7 +126,7 @@ if (isset($_GET['del_id'])) {
 
 
 /**
- * Grab the user data from the database
+ * Fetch the user data from the database
  */
 
 if (isset($_GET['id'])) {
@@ -135,7 +134,7 @@ if (isset($_GET['id'])) {
 
     $id = $user['id'];
     $username = $user['username'];
-    $admin = isset($user['admin']) ? 1 : 0;
+    $admin = $user['admin'] === 1 ? 1 : 0;
     $email = $user['email'];
 }
 
