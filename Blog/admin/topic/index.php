@@ -40,7 +40,7 @@ adminOnly();
         <div class="admin-content">
             <div class="bnt-group">
                 <a href="create.php" class="btn btn-big">Add Topics</a>
-                <a href="index.php" class="btn btn-big">Manage Topics</a>
+
             </div>
             <div class="content">
                 <h2 class="page-title">Manage-Topics</h2>

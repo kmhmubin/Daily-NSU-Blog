@@ -40,7 +40,6 @@ adminOnly();
         <div class="admin-content">
             <div class="bnt-group">
                 <a href="create.php" class="btn btn-big">Add post</a>
-                <a href="index.php" class="btn btn-big">Manage Posts</a>
             </div>
             <div class="content">
                 <h2 class="page-title">Manage-post</h2>
