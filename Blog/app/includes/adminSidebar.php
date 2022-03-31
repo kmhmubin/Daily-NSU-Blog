@@ -34,7 +34,7 @@
         </li>
 
         <li>
-            <a href="<?php echo Base_URL . 'admin/threads-topic/index.php'; ?>">
+            <a href="<?php echo Base_URL . 'admin/thread-topics/index.php'; ?>">
                 Threads Topics
             </a>
         </li>
