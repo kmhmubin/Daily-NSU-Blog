@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 05:53 PM
+-- Generation Time: Apr 01, 2022 at 11:46 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -24,10 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Table structure for table `comments`
 --
--- Creation: Mar 19, 2022 at 02:40 PM
--- Last update: Mar 20, 2022 at 03:20 PM
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `body` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
@@ -40,12 +51,6 @@ CREATE TABLE `posts` (
   `published` tinyint(4) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `posts`:
---   `topic_id`
---       `topics` -> `id`
---
 
 --
 -- Dumping data for table `posts`
@@ -61,10 +66,28 @@ INSERT INTO `posts` (`id`, `user_id`, `topic_id`, `title`, `image`, `body`, `pub
 -- --------------------------------------------------------
 
 --
--- Table structure for table `topics`
+-- Table structure for table `thread_topics`
 --
--- Creation: Mar 18, 2022 at 04:35 PM
--- Last update: Mar 20, 2022 at 12:39 PM
+
+CREATE TABLE `thread_topics` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `thread_topics`
+--
+
+INSERT INTO `thread_topics` (`id`, `name`, `description`, `created_at`) VALUES
+(1, 'News & Announcement', '<p>Latest News &amp; Updates!</p>', '2022-03-31 22:33:27'),
+(2, 'General Discussion', '<p>Ask a question, post a suggestion, start a discussion</p>', '2022-03-31 23:06:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topics`
 --
 
 CREATE TABLE `topics` (
@@ -73,10 +96,6 @@ CREATE TABLE `topics` (
   `description` text NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `topics`:
---
 
 --
 -- Dumping data for table `topics`
@@ -94,9 +113,6 @@ INSERT INTO `topics` (`id`, `name`, `description`, `created_at`) VALUES
 --
 -- Table structure for table `users`
 --
--- Creation: Mar 16, 2022 at 05:10 PM
--- Last update: Mar 20, 2022 at 03:51 PM
---
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -106,10 +122,6 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONSHIPS FOR TABLE `users`:
---
 
 --
 -- Dumping data for table `users`
@@ -124,11 +136,24 @@ INSERT INTO `users` (`id`, `admin`, `username`, `email`, `password`, `created_at
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `topic_id` (`topic_id`);
+
+--
+-- Indexes for table `thread_topics`
+--
+ALTER TABLE `thread_topics`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `topics`
@@ -149,16 +174,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `thread_topics`
+--
+ALTER TABLE `thread_topics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
