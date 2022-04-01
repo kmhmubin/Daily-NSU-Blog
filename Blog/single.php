@@ -11,6 +11,8 @@ if (isset($_GET['id'])) {
   // output($post);
 }
 
+// Select all topics
+
 $topics = selectAll('topics');
 
 ?>
