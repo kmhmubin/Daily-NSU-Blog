@@ -2,6 +2,11 @@
 <div class="left-sidebar">
     <ul>
         <li>
+            <a href="<?php echo Base_URL . 'index.php'; ?>">
+                View Website
+            </a>
+        </li>
+        <li>
             <a href="<?php echo Base_URL . 'admin/users/index.php'; ?>">
                 Manage Users
             </a>

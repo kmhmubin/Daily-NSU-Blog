@@ -1,6 +1,8 @@
 <header>
     <div class="logo">
-        <h1 class="logo-text"><span>NSUer's</span> Blog</h1>
+        <a href="<?php echo Base_URL . 'admin/dashboard.php'; ?>">
+            <h1 class="logo-text"><span>NSUer's</span> Blog</h1>
+        </a>
     </div>
     <i class="fa fa-bars menu-shift"></i>
     <ul class="nav">
