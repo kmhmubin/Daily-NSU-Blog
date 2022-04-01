@@ -21,6 +21,8 @@ if (isset($_GET['t_id'])) {
   $posts = getPublishedPosts();
 }
 
+// Select all Thread Topics
+$thread_topics = selectAll('thread_topics');
 
 ?>
 <!DOCTYPE html>
@@ -56,25 +58,16 @@ if (isset($_GET['t_id'])) {
       <h1 class="slider-title text-center">Discussion Board</h1>
 
       <div class="profile-articles">
-        <!-- user posts -->
-        <div class="user-post">
-          <a href="discussion.php">
-            <h2>News & Announcements</h2>
-            <p>Latest news and updates!</p>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="discussion.php">
-            <h2>General Discussion</h2>
-            <p>Ask a question, post a suggestion, start a discussion</p>
-          </a>
-        </div>
-        <div class="user-post">
-          <a href="discussion.php">
-            <h2>Course Review</h2>
-            <p>Share your experience with the course</p>
-          </a>
-        </div>
+        <?php foreach ($thread_topics as $key => $thread) : ?>
+
+          <!-- user posts -->
+          <div class="user-post">
+            <a href="discussion.php?id=<?php echo $thread['id']; ?>">
+              <h2><?php echo $thread['name']; ?></h2>
+              <p><?php echo $thread['description']; ?></p>
+            </a>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
     <!--post slider-->
