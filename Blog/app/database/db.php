@@ -243,6 +243,62 @@ function searchPosts($term)
 
 
 /**
+ * SQL Query for get published threads
+ * Get all published threads from threads table
+ * Join users table and threads table
+ * find and match user id with thread user id
+ * return the result that match the query
+ * sql = "SELECT * FROM threads JOIN users ON threads.user_id = users.id WHERE threads.published = 1"
+ */
+
+function getPublishedThreads()
+{
+    global $conn;
+    $sql = "SELECT 
+            t.*, u.username 
+            FROM threads as t 
+            JOIN users as u 
+            ON t.user_id = u.id 
+            WHERE t.published = ? 
+            ORDER BY t.update_at DESC";
+
+    $statement = executeQuery($sql, ['published' => 1]);
+    $result = $statement->get_result();
+    $threads = $result->fetch_all(MYSQLI_ASSOC);
+    return $threads;
+}
+
+
+/**
+ * SQL Query for get published threads by topic
+ * Get all published threads from threads table
+ * Join users table and threads table
+ * find and match user id with thread user id
+ * find and match thread topic with topic id
+ * return the result that match the query
+ * sql = "SELECT * FROM threads JOIN users ON threads.user_id = users.id WHERE threads.published = 1 AND threads.topic_id = $topic_id"
+ */
+function getThreadsByThreadTopicId($thread_topic_id)
+{
+    global $conn;
+    $sql = "SELECT 
+            t.*, u.username 
+            FROM threads as t 
+            JOIN users as u 
+            ON t.user_id = u.id 
+            WHERE t.published = ? 
+            AND t.topic_id = ? 
+            ORDER BY t.update_at DESC";
+
+    $statement = executeQuery($sql, ['published' => 1, 'thread_topic_id' => $thread_topic_id]);
+    $result = $statement->get_result();
+    $threads = $result->fetch_all(MYSQLI_ASSOC);
+    return $threads;
+}
+
+
+
+/**
  * Test above functions
  */
 
