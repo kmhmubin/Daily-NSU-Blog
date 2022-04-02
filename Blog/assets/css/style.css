@@ -81,7 +81,7 @@ a {
   border: 1px solid #c23616;
   background: #e77f67;
 }
-.text-center{
+.text-center {
   text-align: center;
 }
 
@@ -495,7 +495,6 @@ header .menu-shift {
   align-items: stretch;
   flex-wrap: wrap;
   align-content: stretch;
-  height: 100%;
   padding: 15px;
   gap: 5px;
 }
