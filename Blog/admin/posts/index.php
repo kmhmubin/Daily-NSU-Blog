@@ -1,7 +1,10 @@
 <?php
 include("../../path.php");
 include(ROOT_PATH . '/app/controllers/posts.php');
+
 adminOnly();
+// Grab the User's data
+$users = selectAll('users');
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +68,13 @@ adminOnly();
                                 <td>
                                     <?php echo $post['title'] ?>
                                 </td>
-                                <?php if (isset($_SESSION['id'])) : ?>
-                                    <td>
-                                        <?php echo $_SESSION['username'] ?>
-                                    </td>
-                                <?php endif; ?>
+                                <?php foreach ($users as $key => $user) :  ?>
+                                    <?php if ($post['user_id'] == $user['id']) : ?>
+                                        <td>
+                                            <?php echo ucfirst($user['username']); ?>
+                                        </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                                 <td>
                                     <a href="edit.php?id=<?php echo $post['id']; ?>" class="edit">
                                         Edit
