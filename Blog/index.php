@@ -58,13 +58,13 @@ $thread_topics = selectAll('thread_topics');
       <h1 class="slider-title text-center">Discussion Board</h1>
 
       <div class="profile-articles">
-        <?php foreach ($thread_topics as $key => $thread) : ?>
+        <?php foreach ($thread_topics as $key => $thread_topic) : ?>
 
           <!-- user posts -->
           <div class="user-post">
-            <a href="discussion.php?id=<?php echo $thread['id']; ?>">
-              <h2><?php echo $thread['name']; ?></h2>
-              <p><?php echo $thread['description']; ?></p>
+            <a href="discussion.php?id=<?php echo $thread_topic['id']; ?>">
+              <h2><?php echo $thread_topic['name']; ?></h2>
+              <p><?php echo $thread_topic['description']; ?></p>
             </a>
           </div>
         <?php endforeach; ?>

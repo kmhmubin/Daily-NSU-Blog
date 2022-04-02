@@ -287,7 +287,7 @@ function getThreadsByThreadTopicId($thread_topic_id)
             JOIN users as u 
             ON t.user_id = u.id 
             WHERE t.published = ? 
-            AND t.topic_id = ? 
+            AND t.thread_topic_id = ? 
             ORDER BY t.update_at DESC";
 
     $statement = executeQuery($sql, ['published' => 1, 'thread_topic_id' => $thread_topic_id]);

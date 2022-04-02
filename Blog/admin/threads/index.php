@@ -1,7 +1,10 @@
 <?php
 include("../../path.php");
 include(ROOT_PATH . '/app/controllers/threads.php');
+
 adminOnly();
+// Grab the User's data
+$users = selectAll('users');
 ?>
 
 <!DOCTYPE html>
@@ -77,11 +80,14 @@ adminOnly();
                                 <?php endforeach; ?>
 
 
-                                <?php if (isset($_SESSION['id'])) : ?>
-                                    <td>
-                                        <?php echo $_SESSION['username'] ?>
-                                    </td>
-                                <?php endif; ?>
+                                <?php foreach ($users as $key => $user) :  ?>
+                                    <?php if ($thread['user_id'] == $user['id']) : ?>
+                                        <td>
+                                            <?php echo ucfirst($user['username']); ?>
+                                        </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+
                                 <td>
                                     <a href="edit.php?id=<?php echo $thread['id']; ?>" class="edit">
                                         Edit
