@@ -52,19 +52,47 @@ adminOnly();
                 <form action="edit.php" method="POST">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div>
-                        <label>Name</label>
-                        <input type="text" class="text-input" name="name" value="<?php echo $name; ?>">
-                    </div>
-
-                    <div>
-                        <label>Description</label>
-                        <textarea name="description" id="body">
-                            <?php echo $description; ?>
+                        <label>Body</label>
+                        <textarea name="body" id="body">
+                            <?php echo $body; ?>
                         </textarea>
                     </div>
 
+
                     <div>
-                        <button type="submit" name="update-topic" class="btn btn-submit">Update Comment</button>
+                        <label>Select Post</label>
+                        <select name="post_id" class="text-input">
+                            <option value="">Select Post</option>
+                            <?php foreach ($threads as $key => $thread) : ?>
+
+                                <!-- checking the selection -->
+                                <?php if (!empty($thread_id) && $thread_id == $thread['id']) : ?>
+                                    <option value="<?php echo $thread['id']; ?>" selected>
+                                        <?php echo $thread['title']; ?>
+                                    </option>
+                                <?php else : ?>
+                                    <option value="<?php echo $thread['id']; ?>">
+                                        <?php echo $thread['title']; ?>
+                                    </option>
+                                <?php endif; ?>
+
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+                    <div>
+                        <?php if (empty($published)) : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published">
+                        <?php else : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published" checked>
+                        <?php endif; ?>
+                    </div>
+
+                    <div>
+                        <button type="submit" name="update-comment" class="btn btn-submit">Update Comment</button>
                     </div>
                 </form>
             </div>

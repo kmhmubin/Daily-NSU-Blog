@@ -2,6 +2,8 @@
 include("../../path.php");
 include(ROOT_PATH . '/app/controllers/thread-comments.php');
 adminOnly();
+// Grab the User's data
+$users = selectAll('users');
 ?>
 
 <!DOCTYPE html>
@@ -51,18 +53,56 @@ adminOnly();
                 <table>
                     <thead>
                         <th>SN.</th>
-                        <th>Title</th>
-                        <th colspan="2">Actions</th>
+                        <th>Post Title</th>
+                        <th>Comment</th>
+                        <th>username</th>
+                        <th colspan="3">Actions</th>
                     </thead>
                     <tbody>
 
-                        <?php foreach ($thread_topics as $key => $topic) : ?>
+                        <?php foreach ($thread_comments as $key => $comment) : ?>
 
                             <tr>
                                 <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $topic['name'] ?></td>
-                                <td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Edit</a></td>
-                                <td><a href="index.php?del_id=<?php echo $topic['id'] ?>" class="delete">Delete</a></td>
+
+                                <?php foreach ($threads as $key => $thread) :  ?>
+                                    <?php if ($comment['thread_id'] == $thread['id']) : ?>
+                                        <td>
+                                            <?php echo $thread['title'] ?>
+                                        </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+
+                                <td><?php echo html_entity_decode($comment['body']); ?></td>
+
+                                <?php foreach ($users as $key => $user) :  ?>
+                                    <?php if ($comment['user_id'] == $user['id']) : ?>
+                                        <td>
+                                            <?php echo ucfirst($user['username']); ?>
+                                        </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+
+                                <td>
+                                    <a href="edit.php?id=<?php echo $comment['id']; ?>" class="edit">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="index.php?del_id=<?php echo $comment['id'] ?>" class="delete">Delete</a>
+                                </td>
+                                <?php if ($comment['published']) : ?>
+                                    <td>
+                                        <a href="edit.php?published=0&tc_id=<?php echo $comment['id'] ?>" class="unpublish">
+                                            Unpublish
+                                        </a>
+                                    </td>
+
+                                <?php else : ?>
+                                    <td>
+                                        <a href="edit.php?published=1&tc_id=<?php echo $comment['id'] ?>" class="publish">
+                                            Publish
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
 

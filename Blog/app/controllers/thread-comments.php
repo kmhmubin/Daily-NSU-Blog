@@ -11,41 +11,129 @@ $errors = array();
 $table = "thread_comments";
 
 // Topics table fields
+$id = "";
+$thread_id = "";
+$parent_comment_id = 1;
+$body = "";
+$published = "";
 
+
+// Load all the posts
+$threads = selectAll('threads');
 
 // select all topics from database
-$thread_topics = selectAll($table);
+$thread_comments = selectAll($table);
 
 
 
 /**
- * Grab the data from the form and add it to the database
- * check the form validation
- * Display a success message
+ * Show data in the edit form
  */
 
-
-
-/**
- * Get the ID of the topic for read and update
- * show the data from the database on the edit form
- */
-
-
-
-/**
- * Get the ID of the topic to be updated
- * Update the data from the database on the edit form
- * Display a success message
- * Redirect to the manage topics page
- */
+if (isset($_GET['id'])) {
+    $thread_comment = selectOne($table, ['id' => $_GET['id']]);
+    $id = $thread_comment['id'];
+    $thread_id = $thread_comment['thread_id'];
+    $parent_comment_id = $thread_comment['parent_comment_id'];
+    $body = $thread_comment['body'];
+    $published = $thread_comment['published'];
+    $update_at = $thread_comment['update_at'];
+}
 
 
 
 
 /**
- * Get the ID of the topic to be deleted
- * Delete the data from the database
- * Display a success message
- * Redirect to the manage topics page
+ * Inset post into database
+ * 
  */
+
+if (isset($_POST['add-comment'])) {
+    adminOnly();
+
+    $errors = validateThreadComment($_POST);
+
+
+    if (count($errors) === 0) {
+        unset($_POST['add-comment']);
+        $_POST['user_id'] = $_SESSION['id'];
+        $_POST['body'] = htmlentities($_POST['body']);
+        $_POST['parent_comment_id'] = $_POST['parent_comment_id'] ?? 1;
+        $_POST['published'] = isset($_POST['published']) ? 1 : 0;
+
+        $thread_comment_id = create($table, $_POST);
+        $_SESSION['message'] = "Thread Comment added successfully";
+        $_SESSION['type'] = "success";
+        header("Location: " . Base_URL . "admin/thread-comments/index.php");
+        exit();
+    } else {
+
+        $body = $_POST['body'];
+        $thread_id = $_POST['thread_id'];
+        $parent_comment_id = $_POST['parent_comment_id'];
+        $published = isset($_POST['published']) ? 1 : 0;
+    }
+}
+
+
+/**
+ * Update post into database
+ * 
+ */
+
+if (isset($_POST['update-comment'])) {
+    adminOnly();
+    $errors = validateThreadComment($_POST);
+
+
+    if (count($errors) === 0) {
+        $id = $_POST['id'];
+        unset($_POST['update-comment'], $_POST['id']);
+        $_POST['user_id'] = $_SESSION['id'];
+        $_POST['body'] = htmlentities($_POST['body']);
+        $_POST['parent_comment_id'] = $_POST['parent_comment_id'] ?? 1;
+        $_POST['published'] = isset($_POST['published']) ? 1 : 0;
+
+        $thread_comment_id = update($table, $id, $_POST);
+        $_SESSION['message'] = "Thread Comment updated successfully";
+        $_SESSION['type'] = "success";
+        header("Location: " . Base_URL . "admin/thread-comments/index.php");
+        exit();
+    } else {
+        $body = $_POST['body'];
+        $thread_id = $_POST['thread_id'];
+        $parent_comment_id = $_POST['parent_comment_id'];
+        $published = isset($_POST['published']) ? 1 : 0;
+    }
+}
+
+
+/**
+ * Delete Thread Comment from database
+ * 
+ */
+if (isset($_GET['del_id'])) {
+    adminOnly();
+    $id = $_GET['del_id'];
+    $count = delete($table, $id);
+    $_SESSION['message'] = "Thread Comment deleted successfully";
+    $_SESSION['type'] = "success";
+    header("Location: " . Base_URL . "admin/thread-comments/index.php");
+    exit();
+}
+
+
+/**
+ * publish or unpublish Thread Comment from the list
+ */
+
+if (isset($_GET['published']) && isset($_GET['tc_id'])) {
+    adminOnly();
+    $tc_id = $_GET['tc_id'];
+    $published = $_GET['published'];
+    $count = update($table, $tc_id, ['published' => $published]);
+    $_SESSION['message'] = "Thread Comment published successfully";
+    $_SESSION['type'] = "success";
+    header("Location: " . Base_URL . "admin/thread-comments/index.php");
+    exit();
+}
