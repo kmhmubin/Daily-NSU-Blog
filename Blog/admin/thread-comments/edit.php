@@ -61,7 +61,7 @@ adminOnly();
 
                     <div>
                         <label>Select Post</label>
-                        <select name="post_id" class="text-input">
+                        <select name="thread_id" class="text-input">
                             <option value="">Select Post</option>
                             <?php foreach ($threads as $key => $thread) : ?>
 
