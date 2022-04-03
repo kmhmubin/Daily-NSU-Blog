@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo Base_URL . 'admin/comments/index.php'; ?>">
+            <a href="<?php echo Base_URL . 'admin/post-comment/index.php'; ?>">
                 Post Comments
             </a>
         </li>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo Base_URL . 'admin/discussions/index.php'; ?>">
+            <a href="<?php echo Base_URL . 'admin/thread-comments/index.php'; ?>">
                 Threads Comments
             </a>
         </li>

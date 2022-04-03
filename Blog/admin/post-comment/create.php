@@ -50,28 +50,73 @@ adminOnly();
                 <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
 
                 <form action="create.php" method="post">
-                    <div>
-                        <label>Name</label>
-                        <input type="text" name="name" class="text-input" value="<?php echo $name; ?>">
-                    </div>
 
                     <div>
-                        <label>Description</label>
-                        <textarea name="description" id="body">
-                            <?php echo $description; ?>
+                        <label>Body</label>
+                        <textarea name="body" id="body">
+                            <?php echo $body; ?>
                         </textarea>
                     </div>
 
+
                     <div>
-                        <button type="submit" class="btn btn-submit" name="add-topic">Add Comment</button>
+                        <label>Select Post</label>
+                        <select name="post_id" class="text-input">
+                            <option value="">Select Post</option>
+                            <?php foreach ($posts as $key => $post) : ?>
+
+                                <!-- checking the selection -->
+                                <?php if (!empty($post_id) && $post_id == $post['id']) : ?>
+                                    <option value="<?php echo $post['id']; ?>" selected>
+                                        <?php echo $post['title']; ?>
+                                    </option>
+                                <?php else : ?>
+                                    <option value="<?php echo $post['id']; ?>">
+                                        <?php echo $post['title']; ?>
+                                    </option>
+                                <?php endif; ?>
+
+
+                            <?php endforeach; ?>
+
+                        </select>
+                    </div>
+                    <div>
+                        <?php if (empty($published)) : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published">
+                        <?php else : ?>
+                            <label>Published</label>
+                            <input type="checkbox" name="published" checked>
+                        <?php endif; ?>
+                    </div>
+                    <div>
+                        <button type="submit" name="add-comment" class="btn btn-submit">Add Thread</button>
                     </div>
                 </form>
+
             </div>
+
         </div>
         <!--admin main contant ends-->
     </div>
 
+    <script>
+        function postComment() {
+            var request = new XMLHttpRequest();
+            request.open('POST', 'create.php');
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
 
+            var commentForm = document.getElementById("commentForm");
+            var formData = new FormData(commentForm);
+            request.send(formData);
+        }
+    </script>
 
     <!--Ckeditor-->
     <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
