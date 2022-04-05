@@ -655,6 +655,7 @@ table th {
   border: 1px solid #dcdde1;
   border-radius: 5px;
   min-width: 100%;
+  margin: 20px;
 }
 
 .comment-card h3,
@@ -673,6 +674,36 @@ table th {
 
 .show-reply {
   cursor: pointer;
+}
+
+.reply-btn {
+  background: #2864e6;
+  text-align: center;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.reply-btn:hover {
+  background: #031f74;
+}
+
+.reply-cancle-btn {
+  background: #d62121;
+  text-align: center;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.reply-cancle-btn:hover {
+  background: #630202;
 }
 
 /* PAGE: Profile page */

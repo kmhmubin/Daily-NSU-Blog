@@ -15,6 +15,10 @@ if (isset($_GET['id'])) {
 
 $topics = selectAll('topics');
 
+// Select all comments where post id same
+$post_comments = selectAll('post_comments', ['post_id' => $post['id']]);
+// Grab the User's data
+$users = selectAll('users');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,77 +61,13 @@ $topics = selectAll('topics');
             <div>
               <h1>comments <span>( 3 )</span></h1>
             </div>
-            <div class="comment-container" id="first-comment">
-              <!-- first comment card start-->
-              <div class="comment-card">
-                <h3 class="comment-title">The first comments</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Natus mollitia excepturi quidem! Autem, nemo veniam iste
-                  optio vel odit quae?
-                </p>
-                <div class="comment-footer">
-                  <div>Likes 123</div>
-                  <div>Dislikes 123</div>
-                  <div class="show-reply">Reply 2</div>
-                </div>
-                <!-- first comment card end -->
-              </div>
-              <!-- second comment card start-->
-              <div class="comment-container" dataset="first-comment" id="first-reply">
-                <!-- first comment reply card start-->
-                <div class="comment-card">
-                  <h3 class="comment-title">The first reply</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Natus mollitia excepturi quidem! Autem, nemo veniam iste
-                    optio vel odit quae?
-                  </p>
-                  <div class="comment-footer">
-                    <div>Likes 123</div>
-                    <div>Dislikes 123</div>
-                    <div class="show-reply">Reply 2</div>
-                  </div>
-                  <!-- first comment reply card end -->
-                </div>
 
-                <div class="comment-container" dataset="first-reply" id="second-reply">
-                  <!-- first comment card start-->
-                  <div class="comment-card">
-                    <h3 class="comment-title">The second reply</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing
-                      elit. Natus mollitia excepturi quidem! Autem, nemo
-                      veniam iste optio vel odit quae?
-                    </p>
-                    <div class="comment-footer">
-                      <div>Likes 123</div>
-                      <div>Dislikes 123</div>
-                      <div class="show-reply">Reply 2</div>
-                    </div>
-                    <!-- first comment card end -->
-                  </div>
-                  <!-- second comment card start-->
-                  <div class="comment-container" dataset="first-comment" id="second-comment">
-                    <!-- first comment reply card start-->
-                    <div class="comment-card">
-                      <h3 class="comment-title">The first comments reply</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Natus mollitia excepturi quidem! Autem, nemo
-                        veniam iste optio vel odit quae?
-                      </p>
-                      <div class="comment-footer">
-                        <div>Likes 123</div>
-                        <div>Dislikes 123</div>
-                        <div class="show-reply">Reply 2</div>
-                      </div>
-                      <!-- first comment reply card end -->
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Load comments data -->
+            <div class="comment-container" id="comment-container">
+              <input type="hidden" name="post_id" id="post_id" value="<?php echo $post['id']; ?>">
+
             </div>
+
           </section>
         </div>
       </div>
@@ -151,10 +91,13 @@ $topics = selectAll('topics');
 
 
         <div class="comment">
-          <textarea name="message" class="text-input contact-input" placeholder="Add your comment....."></textarea><br>
-          <button type="submit" class="btn btn-big contact-btn">
-            <i class="fas fa-envelope"></i> Submit
-          </button>
+          <form>
+            <div id="error_status"></div>
+            <input type="hidden" name="post_id" id="post_id" value="<?php echo $post["id"]; ?>">
+            <textarea class="text-input contact-input" name="message" id="comment_textbox" rows="3" placeholder="Add your comment... "></textarea>
+            <br>
+            <button type="button" class="btn btn-big contact-btn" id="add_comment_button">Comment</button>
+          </form>
         </div>
       </div>
       <!--sidebar section section ends -->
@@ -163,15 +106,14 @@ $topics = selectAll('topics');
   </div>
   <!--page wapper ends-->
 
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/comment.js"></script>
+
   <!--footer connection-->
   <?php include(ROOT_PATH . "/app/includes/footer.php") ?>
 
-  <!--Jquary-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!--Slick corsousel-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <!--custom scrip-->
-  <script src="asstes/js/scripts.js"></script>
+
 </body>
 
 </html>
