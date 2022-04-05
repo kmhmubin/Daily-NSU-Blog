@@ -109,7 +109,7 @@ if (isset($_POST['add-reply'])) {
  */
 if (isset($_POST['view-reply'])) {
     $reply_id = $_POST['reply_id'];
-    $reply_query = "SELECT * FROM $reply_table WHERE comment_id = $reply_id ORDER BY created_at DESC";
+    $reply_query = "SELECT * FROM $reply_table WHERE comment_id = $reply_id ORDER BY created_at ASC";
     $query_run = mysqli_query($conn, $reply_query);
 
     $replyHTML = '';
@@ -146,4 +146,18 @@ if (isset($_POST['view-reply'])) {
         ';
     }
     echo $replyHTML;
+}
+
+
+/**
+ * Add sub reply comment from database
+ */
+
+if (isset($_POST['add-sub-reply'])) {
+    $sub_reply_id = mysqli_real_escape_string($conn, $_POST['sub_reply_id']);
+    $sub_reply_message = mysqli_real_escape_string($conn, $_POST['sub_reply_message']);
+    $user_id = $_SESSION['id'];
+
+    $query = "INSERT INTO $reply_table (user_id, comment_id, reply_message) VALUES ('$user_id', '$sub_reply_id', '$sub_reply_message')";
+    $result = mysqli_query($conn, $query);
 }

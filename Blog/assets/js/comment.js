@@ -179,4 +179,34 @@ $(document).ready(function () {
   $(document).on("click", "#sub-reply-cancle-button", function () {
     $("#sub-reply-section").html("");
   });
+
+  // sub reply add button event will add reply to the comment
+  $(document).on("click", "#sub-reply-add-button", function (e) {
+    e.preventDefault();
+
+    var subReplyBtnClicked = $(this);
+    var sub_reply_id = subReplyBtnClicked
+      .closest("#sub-reply-box")
+      .find("#sub_relpy_btn")
+      .attr("value");
+    var sub_reply_message = subReplyBtnClicked
+      .closest("#sub-reply-box")
+      .find("#sub-reply-message")
+      .val();
+
+    var data = {
+      sub_reply_id: sub_reply_id,
+      sub_reply_message: sub_reply_message,
+      "add-sub-reply": true,
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "comment.php",
+      data: data,
+      success: function (response) {
+        $("#reply-section").html("");
+      },
+    });
+  });
 });
