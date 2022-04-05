@@ -143,4 +143,40 @@ $(document).ready(function () {
       },
     });
   });
+
+  // reply to sub reply  event will show reply form
+  $(document).on("click", "#sub_relpy_btn", function (e) {
+    e.preventDefault();
+
+    var subReplyBtnClicked = $(this);
+    var sub_reply_id = subReplyBtnClicked.attr("value");
+    var username = subReplyBtnClicked
+      .closest("#sub-reply-box")
+      .find("#get_username")
+      .val();
+    console.log(sub_reply_id);
+    console.log(username);
+
+    // empty the reply section
+    $("#sub-reply-section").html("");
+    // when pressed reply button, show the reply form
+    subReplyBtnClicked
+      .closest("#sub-reply-box")
+      .find("#sub-reply-section")
+      .append(
+        '<input type="text" value="@' +
+          username +
+          '"  id="sub-reply-message" class="text-input contact-input" placeholder="relpy to the comment">\
+            <div class="comment-footer">\
+              <button class="reply-btn" id="sub-reply-add-button">Reply</button>\
+              <button class="reply-cancle-btn" id="sub-reply-cancle-button">Cancle</button>\
+            </div>\
+        '
+      );
+  });
+
+  // sub reply cancle button hide the reply form
+  $(document).on("click", "#sub-reply-cancle-button", function () {
+    $("#sub-reply-section").html("");
+  });
 });

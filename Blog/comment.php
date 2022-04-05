@@ -123,7 +123,8 @@ if (isset($_POST['view-reply'])) {
 
         $replyHTML .= '
         
-        <div class="comment-card" id="reply-box">
+        <div class="comment-card" id="sub-reply-box">
+        <input type="hidden" id="get_username" value="' . $user_row['username'] . '"/>
                 <div class="comment-title">
                   <h3>' . ucwords($user_row['username']) . '</h3>
                   <h4>
@@ -138,7 +139,7 @@ if (isset($_POST['view-reply'])) {
                     </div>
                   </div>
                 </div>
-                <div class="mt-2 ml-2" id="reply-section"></div>
+                <div class="mt-2 ml-2" id="sub-reply-section"></div>
         </div>
 
         
