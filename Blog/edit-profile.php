@@ -37,6 +37,8 @@ if (isset($_GET['id'])) {
             <div class="edit-profile-header">
                 <h2>Edit Profile</h2>
             </div>
+            <!-- helpers connection-->
+            <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
 
             <form action="edit-profile.php" id="form" class="edit-form" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">

@@ -53,6 +53,7 @@ function validateLogin($user)
 function validateUserProfile($user)
 {
     $errors = array();
+
     if (empty($user['first_name'])) {
         array_push($errors, 'first_name is required');
     }
@@ -84,6 +85,12 @@ function validateUserProfile($user)
         array_push($errors, 'Youtube is required');
     }
 
+    $existingUser = selectOne('users', ['email' => $user['email']]);
+    if (isset($existingUser)) {
+        if (isset($user['user-profile-update']) && $existingUser['id'] != $user['id']) {
+            array_push($errors, 'Email already exists');
+        }
+    }
 
     return $errors;
 }

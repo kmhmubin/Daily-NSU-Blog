@@ -11,7 +11,7 @@ include(ROOT_PATH . "/app/helpers/middleware.php");
 $errors = array();
 
 // assign variables
-$id = $username = $admin = $email = $password = $passwordConf = "";
+$id = $username = $admin = $email = $password = $passwordConf = $first_name = $last_name = $profile_tagline = $location = $about_me = $fb_link = $tw_link = $lk_link = $yt_link = "";
 
 // table name
 $table = "users";
@@ -184,15 +184,15 @@ if (isset($_POST['update-user'])) {
  */
 
 if (isset($_POST['user-profile-update'])) {
-    // output($_POST);
-    $errors = validateUserProfile($_POST);
-    if (count($errors) === 0) {
+    userOnly();
+
+    if (count($errors) == 0) {
         $id = $_POST['id'];
         unset($_POST['user-profile-update'], $_POST['id']);
         // output($_POST);
         $_POST['admin'] = 0;
-
         $_POST['admin'] = isset($_POST['admin']) ? 1 : 0;
+        $_POST['about_me'] = htmlentities($_POST['about_me']);
         $userProfile = update($table, $id, $_POST);
         $_SESSION['message'] = 'Profile updated successfully';
         $_SESSION['type'] = 'success';
