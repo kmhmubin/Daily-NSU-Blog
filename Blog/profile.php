@@ -11,6 +11,7 @@ if (isset($_GET['id'])) {
 // grab the posts from the database where the user id is the same as the user id
 $posts = selectAll('posts', ['user_id' => $user['id']]);
 
+userOnly();
 ?>
 
 

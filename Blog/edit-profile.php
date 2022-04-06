@@ -6,6 +6,8 @@ if (isset($_GET['id'])) {
     $user = selectOne('users', ['id' => $_GET['id']]);
     // output($user);
 }
+
+userOnly();
 ?>
 <!DOCTYPE html>
 <html lang="en">
