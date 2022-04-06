@@ -136,6 +136,15 @@ if (isset($_GET['id'])) {
     $username = $user['username'];
     $admin = $user['admin'] === 1 ? 1 : 0;
     $email = $user['email'];
+    $first_name = $user['first_name'];
+    $last_name = $user['last_name'];
+    $profile_tagline = $user['profile_tagline'];
+    $location = $user['location'];
+    $about_me = $user['about_me'];
+    $fb_link = $user['fb_link'];
+    $tw_link = $user['tw_link'];
+    $lk_link = $user['lk_link'];
+    $yt_link = $user['yt_link'];
 }
 
 
@@ -167,5 +176,39 @@ if (isset($_POST['update-user'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $passwordConf = $_POST['passwordConf'];
+    }
+}
+
+/**
+ * Update the user data from user edit page
+ */
+
+if (isset($_POST['user-profile-update'])) {
+    // output($_POST);
+    $errors = validateUserProfile($_POST);
+    if (count($errors) === 0) {
+        $id = $_POST['id'];
+        unset($_POST['user-profile-update'], $_POST['id']);
+        // output($_POST);
+        $_POST['admin'] = 0;
+
+        $_POST['admin'] = isset($_POST['admin']) ? 1 : 0;
+        $userProfile = update($table, $id, $_POST);
+        $_SESSION['message'] = 'Profile updated successfully';
+        $_SESSION['type'] = 'success';
+        header('location: ' . Base_URL . 'profile.php?id=' . $id);
+        exit();
+    } else {
+        $admin = isset($_POST['admin']) ? 1 : 0;
+        $email = $_POST['email'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $profile_tagline = $_POST['profile_tagline'];
+        $location = $_POST['location'];
+        $about_me = $_POST['about_me'];
+        $fb_link = $_POST['fb_link'];
+        $tw_link = $_POST['tw_link'];
+        $lk_link = $_POST['lk_link'];
+        $yt_link = $_POST['yt_link'];
     }
 }

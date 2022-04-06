@@ -48,3 +48,42 @@ function validateLogin($user)
 
     return $errors;
 }
+
+
+function validateUserProfile($user)
+{
+    $errors = array();
+    if (empty($user['first_name'])) {
+        array_push($errors, 'first_name is required');
+    }
+    if (empty($user['last_name'])) {
+        array_push($errors, 'first_name is required');
+    }
+    if (empty($user['email'])) {
+        array_push($errors, 'Email is required');
+    }
+    if (empty($user['profile_tagline'])) {
+        array_push($errors, 'Profile is required');
+    }
+    if (empty($user['location'])) {
+        array_push($errors, 'Location is required');
+    }
+    if (empty($user['about_me'])) {
+        array_push($errors, 'About Me is required');
+    }
+    if (empty($user['fb_link'])) {
+        array_push($errors, 'facebook link is required');
+    }
+    if (empty($user['tw_link'])) {
+        array_push($errors, 'Twitter is required');
+    }
+    if (empty($user['lk_link'])) {
+        array_push($errors, 'Linkedin is required');
+    }
+    if (empty($user['yt_link'])) {
+        array_push($errors, 'Youtube is required');
+    }
+
+
+    return $errors;
+}

@@ -11,12 +11,6 @@ const twitter = document.getElementById("twitter");
 const instagram = document.getElementById("instagram");
 const youtube = document.getElementById("youtube");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  checkInputs();
-});
-
 // Check inputs
 function checkInputs() {
   // Get all values and trim
@@ -105,4 +99,37 @@ function setSuccessFor(input) {
 // Check if email is valid
 function isEmail(email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@northsouth.edu$/.test(email);
+}
+
+function sendData() {
+  let formElements = document.getElementsByClassName("form_data");
+  console.log(formElements);
+  let formData = new FormData();
+  for (let i = 0; i < formElements.length; i++) {
+    formData.append(formElements[i].name, formElements[i].value);
+  }
+
+  document.getElementById("user-profile-update").disable = true;
+
+  const ajaxRequest = new XMLHttpRequest();
+
+  ajaxRequest.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("user-profile-update").disable = false;
+
+      if (response.success != "") {
+        document.getElementById("form").reset();
+        checkInputs();
+      } else {
+        checkInputs();
+      }
+    }
+  };
+
+  ajaxRequest.open("POST", "app/controllers/users.php", true);
+  ajaxRequest.setRequestHeader(
+    "Content-type",
+    "application/x-www-form-urlencoded"
+  );
+  ajaxRequest.send(formData);
 }
