@@ -20,7 +20,11 @@
             <li><a href="<?php echo Base_URL . 'admin/dashboard.php' ?>">Dashboard</a></li>
 
           <?php endif; ?>
-
+          <li>
+            <a href="<?php echo Base_URL . 'profile.php'; ?>">
+              Profile
+            </a>
+          </li>
           <li><a href="<?php echo Base_URL . 'logout.php' ?>" class="logout">Logout</a></li>
         </ul>
       </li>
