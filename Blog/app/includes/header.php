@@ -21,7 +21,7 @@
 
           <?php endif; ?>
           <li>
-            <a href="<?php echo Base_URL . 'profile.php'; ?>">
+            <a href="profile.php?id=<?php echo $_SESSION['id']; ?>">
               Profile
             </a>
           </li>
