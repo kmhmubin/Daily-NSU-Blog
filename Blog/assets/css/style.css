@@ -809,6 +809,22 @@ table th {
   background-color: #f8c291;
 }
 
+.edit {
+  color: green;
+}
+.delete {
+  color: red;
+}
+.publish,
+.view {
+  color: blue;
+}
+.edit:hover,
+.delete:hover,
+.publish:hover {
+  text-decoration: underline;
+}
+
 /* PAGE: Edit Profile */
 .edit-profile-container {
   background-color: white;
@@ -1080,7 +1096,7 @@ table th {
   }
   .footer {
     margin-top: 450px;
-    height: auto;
+    /* height: auto; */
     position: relative;
   }
   .footer .footer-content {

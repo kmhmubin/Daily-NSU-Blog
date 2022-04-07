@@ -46,14 +46,13 @@ if (isset($_GET['id'])) {
 
 
 
-
 /**
- * Inset post into database as admin
+ * Inset post into database as normal user
  * 
  */
 
-if (isset($_POST['add-post'])) {
-    adminOnly();
+if (isset($_POST['create-post'])) {
+    userOnly();
 
     $errors = validatePost($_POST);
 
@@ -82,7 +81,7 @@ if (isset($_POST['add-post'])) {
         $post_id = create($table, $_POST);
         $_SESSION['message'] = "Post added successfully";
         $_SESSION['type'] = "success";
-        header("Location: " . Base_URL . "admin/posts/index.php");
+        header("Location: " . Base_URL . "index.php");
         exit();
     } else {
         $title = $_POST['title'];
@@ -93,13 +92,14 @@ if (isset($_POST['add-post'])) {
 }
 
 
+
 /**
- * Update post into database as admin
+ * Update post into database as user
  * 
  */
 
-if (isset($_POST['update-post'])) {
-    adminOnly();
+if (isset($_POST['update-blog-post'])) {
+    userOnly();
     $errors = validatePost($_POST);
 
     // image upload
@@ -128,7 +128,7 @@ if (isset($_POST['update-post'])) {
         $post_id = update($table, $id, $_POST);
         $_SESSION['message'] = "Post updated successfully";
         $_SESSION['type'] = "success";
-        header("Location: " . Base_URL . "admin/posts/index.php");
+        header("Location: " . Base_URL . "profile.php?id=" . $_SESSION['id']);
         exit();
     } else {
         $title = $_POST['title'];
@@ -139,34 +139,33 @@ if (isset($_POST['update-post'])) {
 }
 
 
-
-
 /**
  * Delete post from database
  * 
  */
-if (isset($_GET['del_id'])) {
-    adminOnly();
-    $id = $_GET['del_id'];
+if (isset($_GET['udel_id'])) {
+    userOnly();
+    $id = $_GET['udel_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "Post deleted successfully";
     $_SESSION['type'] = "success";
-    header("Location: " . Base_URL . "admin/posts/index.php");
+    header("Location: " . Base_URL . "profile.php?id=" . $_SESSION['id']);
     exit();
 }
 
 
+
 /**
- * publish or unpublish post from the list
+ * publish or unpublish post from the list for the user
  */
 
 if (isset($_GET['published']) && isset($_GET['p_id'])) {
-    adminOnly();
+    userOnly();
     $p_id = $_GET['p_id'];
     $published = $_GET['published'];
     $count = update($table, $p_id, ['published' => $published]);
     $_SESSION['message'] = "Post published successfully";
     $_SESSION['type'] = "success";
-    header("Location: " . Base_URL . "admin/posts/index.php");
+    header("Location: " . Base_URL . "profile.php?id=" . $_SESSION['id']);
     exit();
 }

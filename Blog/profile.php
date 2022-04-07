@@ -1,6 +1,6 @@
 <?php
 include('path.php');
-include(ROOT_PATH . '/app/controllers/users.php');
+include(ROOT_PATH . '/app/controllers/user-posts.php');
 // grab the info from the database
 if (isset($_GET['id'])) {
   $user = selectOne('users', ['id' => $_GET['id']]);
@@ -111,14 +111,63 @@ userOnly();
           <h3>Articles</h3>
           <hr />
         </div>
-        <?php foreach ($posts as $post) : ?>
-          <!-- user posts -->
-          <div class="user-post">
-            <a href="single.php?id=<?php echo $post['id']; ?>">
-              <h2> <?php echo $post['title']; ?></h2>
-            </a>
-          </div>
-        <?php endforeach; ?>
+        <table>
+          <thead>
+            <th>SN.</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th colspan="4">Actions</th>
+          </thead>
+          <tbody>
+          <tbody>
+
+            <?php foreach ($posts as $key => $post) : ?>
+              <tr>
+                <td>
+                  <?php echo $key + 1 ?>
+                </td>
+                <td>
+                  <?php echo $post['title'] ?>
+                </td>
+                <td>
+                  <?php echo ucfirst($user['username']); ?>
+                </td>
+
+                <td>
+                  <a href="<?php echo Base_URL . 'single.php?id=' . $post['id']; ?>" class="view">
+                    view
+                  </a>
+                </td>
+                <td>
+                  <a href="<?php echo Base_URL . 'user/edit-post.php?id=' . $post['id']; ?>" class="edit">
+                    Edit
+                  </a>
+                </td>
+                <td>
+                  <a href="<?php echo Base_URL . 'profile.php?id=' . $_SESSION['id'] . '&udel_id=' . $post['id']; ?>" class="delete">
+                    Delete
+                  </a>
+                </td>
+                <?php if ($post['published']) : ?>
+                  <td>
+                    <a href="<?php echo Base_URL . 'user/edit-post.php?published=0&p_id=' . $post['id']; ?>" class="unpublish">
+                      Unpublish
+                    </a>
+                  </td>
+
+                <?php else : ?>
+                  <td>
+                    <a href="<?php echo Base_URL . 'user/edit-post.php?published=1&p_id=' . $post['id']; ?>" class="publish">
+                      Publish
+                    </a>
+                  </td>
+                <?php endif; ?>
+              </tr>
+            <?php endforeach; ?>
+
+          </tbody>
+          </tbody>
+        </table>
       </div>
 
     </section>

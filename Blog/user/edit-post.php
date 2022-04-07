@@ -17,7 +17,7 @@ userOnly();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <!--Custom CSS Styling-->
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Create A Blog | NSUer's Blog</title>
+    <title>Edit Blog Post | NSUer's Blog</title>
 </head>
 
 <body>
@@ -32,12 +32,13 @@ userOnly();
         <!-- Edit Profile Info -->
         <div class="edit-profile-container">
             <div class="edit-profile-header">
-                <h2>Create A Blog Post</h2>
+                <h2>Edit Blog Post</h2>
             </div>
             <!-- helpers connection-->
             <?php include(ROOT_PATH . "/app/helpers/formErrors.php") ?>
 
-            <form action="add-post.php" class="edit-form" method="post" enctype="multipart/form-data">
+            <form action="edit-post.php" class="edit-form" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div>
                     <!-- Post Title -->
                     <div class="form-control">
@@ -95,7 +96,7 @@ userOnly();
                     </div>
                     <!-- Submit -->
                     <div>
-                        <button type="submit" name="create-post" class="form-button">Add Post</button>
+                        <button type="submit" name="update-blog-post" class="form-button">Add Post</button>
                     </div>
             </form>
         </div>
