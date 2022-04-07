@@ -42,7 +42,6 @@ if (isset($_GET['id'])) {
     $body = $thread['body'];
     $thread_topic_id = $thread['thread_topic_id'];
     $published = $thread['published'];
-    $update_at = $thread['update_at'];
 }
 
 
