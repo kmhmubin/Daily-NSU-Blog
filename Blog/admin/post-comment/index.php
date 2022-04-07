@@ -40,10 +40,6 @@ $users = selectAll('users');
 
         <!--admin main content starts-->
         <div class="admin-content">
-            <div class="bnt-group">
-                <a href="create.php" class="btn btn-big">Add Comments</a>
-
-            </div>
             <div class="content">
                 <h2 class="page-title">Manage Post Comments</h2>
 
@@ -56,7 +52,7 @@ $users = selectAll('users');
                         <th>Post Title</th>
                         <th>Comment</th>
                         <th>username</th>
-                        <th colspan="3">Actions</th>
+                        <th colspan="1">Actions</th>
                     </thead>
                     <tbody>
 
@@ -68,12 +64,14 @@ $users = selectAll('users');
                                 <?php foreach ($posts as $key => $post) :  ?>
                                     <?php if ($comment['post_id'] == $post['id']) : ?>
                                         <td>
-                                            <?php echo $post['title'] ?>
+                                            <a href="<?php echo Base_URL . 'single.php?id=' . $post['id']; ?>">
+                                                <?php echo $post['title'] ?>
+                                            </a>
                                         </td>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
 
-                                <td><?php echo html_entity_decode($comment['body']); ?></td>
+                                <td><?php echo html_entity_decode($comment['message']); ?></td>
 
                                 <?php foreach ($users as $key => $user) :  ?>
                                     <?php if ($comment['user_id'] == $user['id']) : ?>
@@ -84,25 +82,9 @@ $users = selectAll('users');
                                 <?php endforeach; ?>
 
                                 <td>
-                                    <a href="edit.php?id=<?php echo $comment['id']; ?>" class="edit">Edit</a>
-                                </td>
-                                <td>
                                     <a href="index.php?del_id=<?php echo $comment['id'] ?>" class="delete">Delete</a>
                                 </td>
-                                <?php if ($comment['published']) : ?>
-                                    <td>
-                                        <a href="edit.php?published=0&pc_id=<?php echo $comment['id'] ?>" class="unpublish">
-                                            Unpublish
-                                        </a>
-                                    </td>
 
-                                <?php else : ?>
-                                    <td>
-                                        <a href="edit.php?published=1&pc_id=<?php echo $comment['id'] ?>" class="publish">
-                                            Publish
-                                        </a>
-                                    </td>
-                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
 
