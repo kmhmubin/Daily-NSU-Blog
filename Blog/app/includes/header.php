@@ -6,9 +6,9 @@
   <ul class="nav">
     <li><a href="<?php echo Base_URL . 'index.php' ?>">Home</a></li>
     <li><a href="#">About Us</a></li>
-    <li><a href="#">Service</a></li>
 
     <?php if (isset($_SESSION['id'])) : ?>
+      <li><a href="<?php echo Base_URL . 'user/add-post.php'; ?>">Create</a></li>
       <li>
         <a href="#">
           <i class="fa fa-user"></i>
