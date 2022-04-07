@@ -2,7 +2,7 @@
 include('path.php');
 include(ROOT_PATH . "/app/database/db.php");
 // include(ROOT_PATH . "/app/helpers/validatePostComment.php");
-// include(ROOT_PATH . "/app/helpers/middleware.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 
 // error array
 $errors = array();
@@ -33,19 +33,19 @@ $reply_table = "thread_comment_replys";
 
 
 if (isset($_POST['load-comment'])) {
-    $thread_id = $_POST['thread_id'];
-    $comments_query = "SELECT * FROM $table WHERE thread_id = $thread_id ORDER BY created_at DESC";
-    $query_run = mysqli_query($conn, $comments_query);
+  $thread_id = $_POST['thread_id'];
+  $comments_query = "SELECT * FROM $table WHERE thread_id = $thread_id ORDER BY created_at DESC";
+  $query_run = mysqli_query($conn, $comments_query);
 
-    $commentHTML = '';
+  $commentHTML = '';
 
-    while ($comment = mysqli_fetch_assoc($query_run)) {
-        $user_id = $comment['user_id'];
-        $user_query = "SELECT * FROM users WHERE id = $user_id";
-        $user_query_run = mysqli_query($conn, $user_query);
-        $user_row = mysqli_fetch_assoc($user_query_run);
+  while ($comment = mysqli_fetch_assoc($query_run)) {
+    $user_id = $comment['user_id'];
+    $user_query = "SELECT * FROM users WHERE id = $user_id";
+    $user_query_run = mysqli_query($conn, $user_query);
+    $user_row = mysqli_fetch_assoc($user_query_run);
 
-        $commentHTML .= '
+    $commentHTML .= '
         
         <div class="comment-card" id="reply-box">
                 <div class="comment-title">
@@ -70,8 +70,8 @@ if (isset($_POST['load-comment'])) {
 
         
         ';
-    }
-    echo $commentHTML;
+  }
+  echo $commentHTML;
 }
 
 
@@ -81,12 +81,13 @@ if (isset($_POST['load-comment'])) {
  */
 
 if (isset($_POST['add-thread-comment'])) {
-    $user_id = $_SESSION['id'];
-    $thread_id = $_POST['thread_id'];
-    $message = $_POST['message'];
+  userOnly();
+  $user_id = $_SESSION['id'];
+  $thread_id = $_POST['thread_id'];
+  $message = $_POST['message'];
 
-    $query = "INSERT INTO $table (user_id, thread_id, message) VALUES ('$user_id', '$thread_id', '$message')";
-    $result = mysqli_query($conn, $query);
+  $query = "INSERT INTO $table (user_id, thread_id, message) VALUES ('$user_id', '$thread_id', '$message')";
+  $result = mysqli_query($conn, $query);
 }
 
 
@@ -95,12 +96,13 @@ if (isset($_POST['add-thread-comment'])) {
  */
 
 if (isset($_POST['add-thread-reply'])) {
-    $comment_id = mysqli_real_escape_string($conn, $_POST['comment_id']);
-    $message = mysqli_real_escape_string($conn, $_POST['reply_message']);
-    $user_id = $_SESSION['id'];
+  userOnly();
+  $comment_id = mysqli_real_escape_string($conn, $_POST['comment_id']);
+  $message = mysqli_real_escape_string($conn, $_POST['reply_message']);
+  $user_id = $_SESSION['id'];
 
-    $query = "INSERT INTO $reply_table (user_id, comment_id, reply_message) VALUES ('$user_id', '$comment_id', '$message')";
-    $result = mysqli_query($conn, $query);
+  $query = "INSERT INTO $reply_table (user_id, comment_id, reply_message) VALUES ('$user_id', '$comment_id', '$message')";
+  $result = mysqli_query($conn, $query);
 }
 
 
@@ -108,20 +110,21 @@ if (isset($_POST['add-thread-reply'])) {
  * Show reply comment in the post page
  */
 if (isset($_POST['view-reply'])) {
-    $reply_id = $_POST['reply_id'];
-    $reply_query = "SELECT * FROM $reply_table WHERE comment_id = $reply_id ORDER BY created_at ASC";
-    $query_run = mysqli_query($conn, $reply_query);
 
-    $replyHTML = '';
+  $reply_id = $_POST['reply_id'];
+  $reply_query = "SELECT * FROM $reply_table WHERE comment_id = $reply_id ORDER BY created_at ASC";
+  $query_run = mysqli_query($conn, $reply_query);
+
+  $replyHTML = '';
 
 
-    while ($reply = mysqli_fetch_assoc($query_run)) {
-        $user_id = $reply['user_id'];
-        $user_query = "SELECT * FROM users WHERE id = $user_id";
-        $user_query_run = mysqli_query($conn, $user_query);
-        $user_row = mysqli_fetch_assoc($user_query_run);
+  while ($reply = mysqli_fetch_assoc($query_run)) {
+    $user_id = $reply['user_id'];
+    $user_query = "SELECT * FROM users WHERE id = $user_id";
+    $user_query_run = mysqli_query($conn, $user_query);
+    $user_row = mysqli_fetch_assoc($user_query_run);
 
-        $replyHTML .= '
+    $replyHTML .= '
         
         <div class="comment-card" id="sub-reply-box">
         <input type="hidden" id="get_username" value="' . $user_row['username'] . '"/>
@@ -144,8 +147,8 @@ if (isset($_POST['view-reply'])) {
 
         
         ';
-    }
-    echo $replyHTML;
+  }
+  echo $replyHTML;
 }
 
 
@@ -154,10 +157,11 @@ if (isset($_POST['view-reply'])) {
  */
 
 if (isset($_POST['add-sub-reply'])) {
-    $sub_reply_id = mysqli_real_escape_string($conn, $_POST['sub_reply_id']);
-    $sub_reply_message = mysqli_real_escape_string($conn, $_POST['sub_reply_message']);
-    $user_id = $_SESSION['id'];
+  userOnly();
+  $sub_reply_id = mysqli_real_escape_string($conn, $_POST['sub_reply_id']);
+  $sub_reply_message = mysqli_real_escape_string($conn, $_POST['sub_reply_message']);
+  $user_id = $_SESSION['id'];
 
-    $query = "INSERT INTO $reply_table (user_id, comment_id, reply_message) VALUES ('$user_id', '$sub_reply_id', '$sub_reply_message')";
-    $result = mysqli_query($conn, $query);
+  $query = "INSERT INTO $reply_table (user_id, comment_id, reply_message) VALUES ('$user_id', '$sub_reply_id', '$sub_reply_message')";
+  $result = mysqli_query($conn, $query);
 }

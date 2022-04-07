@@ -59,7 +59,7 @@ $users = selectAll('users');
           <!-- Comments section -->
           <section>
             <div>
-              <h1>comments <span>( 3 )</span></h1>
+              <h1>comments</h1>
             </div>
 
             <!-- Load comments data -->

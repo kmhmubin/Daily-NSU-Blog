@@ -91,7 +91,7 @@ $user = selectOne('users', ['id' => $thread['user_id']]);
     <!-- Discussion section -->
     <section class="mtb-2">
       <div>
-        <h1>Discussion <span>( 3 )</span></h1>
+        <h1>Discussions</h1>
       </div>
       <div class="comment">
         <form>
