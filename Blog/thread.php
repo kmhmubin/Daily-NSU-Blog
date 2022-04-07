@@ -94,84 +94,27 @@ $user = selectOne('users', ['id' => $thread['user_id']]);
         <h1>Discussion <span>( 3 )</span></h1>
       </div>
       <div class="comment">
-        <textarea name="message" class="text-input contact-input" placeholder="Add your comment....."></textarea><br>
-        <button type="submit" class="btn">
-          <i class="fas fa-envelope"></i> Submit
-        </button>
+        <form>
+          <div id="error_status"></div>
+          <input type="hidden" name="thread_id" id="thread_id" value="<?php echo $thread["id"]; ?>">
+          <textarea class="text-input contact-input" name="message" id="comment_textbox" rows="3" placeholder="Add your comment... "></textarea>
+          <br>
+          <button type="button" class="btn btn-big contact-btn" id="add_comment_button">Comment</button>
+        </form>
       </div>
-      <div class="comment-container" id="first-comment">
-        <!-- first comment card start-->
-        <div class="comment-card">
-          <h3 class="comment-title">The first comments</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
-            mollitia excepturi quidem! Autem, nemo veniam iste optio vel odit
-            quae?
-          </p>
-          <div class="comment-footer">
-            <div>Likes 123</div>
-            <div>Dislikes 123</div>
-            <div class="show-reply">Reply 2</div>
-          </div>
-          <!-- first comment card end -->
-        </div>
-        <!-- second comment card start-->
-        <div class="comment-container" dataset="first-comment" id="first-reply">
-          <!-- first comment reply card start-->
-          <div class="comment-card">
-            <h3 class="comment-title">The first reply</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
-              mollitia excepturi quidem! Autem, nemo veniam iste optio vel
-              odit quae?
-            </p>
-            <div class="comment-footer">
-              <div>Likes 123</div>
-              <div>Dislikes 123</div>
-              <div class="show-reply">Reply 2</div>
-            </div>
-            <!-- first comment reply card end -->
-          </div>
 
-          <div class="comment-container" dataset="first-reply" id="second-reply">
-            <!-- first comment card start-->
-            <div class="comment-card">
-              <h3 class="comment-title">The second reply</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Natus mollitia excepturi quidem! Autem, nemo veniam iste optio
-                vel odit quae?
-              </p>
-              <div class="comment-footer">
-                <div>Likes 123</div>
-                <div>Dislikes 123</div>
-                <div class="show-reply">Reply 2</div>
-              </div>
-              <!-- first comment card end -->
-            </div>
-            <!-- second comment card start-->
-            <div class="comment-container" dataset="first-comment" id="second-comment">
-              <!-- first comment reply card start-->
-              <div class="comment-card">
-                <h3 class="comment-title">The first comments reply</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Natus mollitia excepturi quidem! Autem, nemo veniam iste
-                  optio vel odit quae?
-                </p>
-                <div class="comment-footer">
-                  <div>Likes 123</div>
-                  <div>Dislikes 123</div>
-                  <div class="show-reply">Reply 2</div>
-                </div>
-                <!-- first comment reply card end -->
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <!-- Load comments data -->
+      <div class="comment-container" id="comment-container">
+        <input type="hidden" name="thread_id" id="thread_id" value="<?php echo $thread['id']; ?>">
+
       </div>
     </section>
   </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/thread-comment.js"></script>
 
   <!--footer connection-->
   <?php include(ROOT_PATH . "/app/includes/footer.php") ?>
