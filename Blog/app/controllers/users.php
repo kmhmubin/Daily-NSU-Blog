@@ -29,6 +29,13 @@ function userLogin($user)
     $_SESSION['id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
     $_SESSION['admin'] = $user['admin'];
+
+    // set cookies for user for 7 days
+
+    setcookie('id', $user['id'], time() + 60 * 60 * 24 * 7);
+    setcookie('username', $user['username'], time() + 60 * 60 * 24 * 7);
+    setcookie('admin', $user['admin'], time() + 60 * 60 * 24 * 7);
+
     $_SESSION['message'] = 'You are now logged in';
     $_SESSION['type'] = 'success';
 
