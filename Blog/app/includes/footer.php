@@ -19,10 +19,10 @@
         <div class="footer-section links">
           <h2>Quick Links</h2>
           <br />
-          <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a><br /><br />
-          <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a><br /><br />
-          <a href="#"><i class="fa-brands fa-instagram-square"></i> Instagram</a><br /><br />
-          <a href="#"><i class="fab fa-youtube"></i> Youtube</a>
+          <a href="https://www.facebook.com/NorthSouthUniversity"><i class="fa-brands fa-facebook"></i> Facebook</a><br /><br />
+          <a href="https://twitter.com/NorthSouthU"><i class="fa-brands fa-twitter"></i> Twitter</a><br /><br />
+          <a href="https://www.instagram.com/accounts/login/?next=/NorthSouthUniversity/"><i class="fa-brands fa-instagram-square"></i> Instagram</a><br /><br />
+          <a href="https://www.youtube.com/NorthSouthUniversity"><i class="fab fa-youtube"></i> Youtube</a>
         </div>
         <div class="footer-section contact-form">
           <h2>Contact Us</h2>

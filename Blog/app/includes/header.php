@@ -8,7 +8,13 @@
     <li><a href="#">About Us</a></li>
 
     <?php if (isset($_SESSION['id'])) : ?>
-      <li><a href="<?php echo Base_URL . 'user/add-post.php'; ?>">Create</a></li>
+      <li>
+        <a href="#">Create</a>
+        <ul>
+          <li><a href="<?php echo Base_URL . 'user/add-post.php'; ?>">Add-post</a></li>
+          <li><a href="<?php echo Base_URL . 'user/add-thread.php'; ?>">Add-thread</a></li>
+        </ul>
+      </li>
       <li>
         <a href="#">
           <i class="fa fa-user"></i>
