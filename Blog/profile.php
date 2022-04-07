@@ -11,6 +11,12 @@ if (isset($_GET['id'])) {
 // grab the posts from the database where the user id is the same as the user id
 $posts = selectAll('posts', ['user_id' => $user['id']]);
 
+// grab the threads from the database where the user id is the same as the user id
+$threads = selectAll('threads', ['user_id' => $user['id']]);
+
+// grab all thread topics
+$thread_topics = selectAll('thread_topics');
+
 userOnly();
 ?>
 
@@ -105,7 +111,7 @@ userOnly();
         </div>
         <div></div>
       </div>
-      <!-- User published article section -->
+      <!-- User published article & thread section -->
       <div class="profile-articles">
         <div>
           <h3>Articles</h3>
@@ -162,6 +168,84 @@ userOnly();
                     </a>
                   </td>
                 <?php endif; ?>
+              </tr>
+            <?php endforeach; ?>
+
+          </tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="profile-articles">
+        <div>
+          <h3>Threads</h3>
+        </div>
+        <table>
+          <thead>
+            <th>SN.</th>
+            <th>Title</th>
+            <th>Thread Topic</th>
+            <th>Author</th>
+            <th colspan="4">Actions</th>
+          </thead>
+          <tbody>
+          <tbody>
+
+            <?php foreach ($threads as $key => $thread) : ?>
+              <tr>
+                <td>
+                  <?php echo $key + 1 ?>
+                </td>
+                <td>
+                  <?php echo $thread['title'] ?>
+                </td>
+
+                <?php foreach ($thread_topics as $key => $topic) :  ?>
+                  <?php if ($thread['thread_topic_id'] == $topic['id']) : ?>
+                    <td>
+                      <?php echo $topic['name'] ?>
+                    </td>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+
+
+
+                <td>
+                  <?php echo ucfirst($user['username']); ?>
+                </td>
+
+                <td>
+                  <a href="<?php echo Base_URL . 'thread.php?id=' . $thread['id']; ?>" class="view">
+                    view
+                  </a>
+                </td>
+                <td>
+                  <a href="<?php echo Base_URL . 'user/edit-thread.php?id=' . $thread['id']; ?>" class="edit">
+                    Edit
+                  </a>
+                </td>
+
+                <td>
+                  <a href="<?php echo Base_URL . 'profile.php?id=' . $_SESSION['id'] . '&udel_id=' . $thread['id']; ?>" class="delete">
+                    Delete
+                  </a>
+                </td>
+
+
+                <?php if ($thread['published']) : ?>
+                  <td>
+                    <a href="<?php echo Base_URL . 'user/edit-thread.php?published=0&t_id=' . $thread['id']; ?>" class="unpublish">
+                      Unpublish
+                    </a>
+                  </td>
+
+                <?php else : ?>
+                  <td>
+                    <a href="<?php echo Base_URL . 'user/edit-thread.php?published=1&t_id=' . $thread['id']; ?>" class="publish">
+                      Publish
+                    </a>
+                  </td>
+                <?php endif; ?>
+
               </tr>
             <?php endforeach; ?>
 
