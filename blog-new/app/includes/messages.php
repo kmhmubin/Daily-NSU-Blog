@@ -12,6 +12,9 @@
 
 <script>
     setTimeout(function() {
-        document.getElementsByClassName('msg')[0].remove();
+        const msgElement = document.getElementsByClassName('msg');
+        if (msgElement.length > 0) {
+            msgElement[0].remove();
+        }
     }, 3000);
 </script>
