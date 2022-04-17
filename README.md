@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-   <img width="33%" src="https://github.com/kmhmubin/NSUers-Blog/blob/main/doc_images/NSUers-Blog.svg">
+   <img width="33%" src="https://raw.githubusercontent.com/kmhmubin/NSUers-Blog/f11b141831dcc271ca11c6c002d45f364bc05f4a/doc_images/NSUers-Blog.svg">
 </p>
 
 ## Overview
